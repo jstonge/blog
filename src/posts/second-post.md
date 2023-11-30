@@ -1,6 +1,6 @@
 ---
-title: Second
-description: Second post.
+title: SvelteKIT
+description: Trying stuff with Svelte
 date: '2023-4-16'
 categories:
   - sveltekit
@@ -8,16 +8,35 @@ categories:
 published: true
 ---
 
+Here i am trying different things with sveltekit
+
 <script>
-  import Counter from './counter.svelte'
+  import Counter from '$lib/components/counter.svelte'
+  import ScatterPlot from '$lib/components/bar.svelte'
+  import Mermaid from '$lib/components/mermaid.svelte'
 </script>
 
-## Svelte
+## D3 + Svelte
 
-Media inside the **static** folder is served from `/`.
+This is a scatter plot created using svelte + d3. It glows. But this is CSS
 
-![Svelte](favicon.png)
+<br>
+
+<ScatterPlot />
+
 
 ## Counter
 
 <Counter />
+
+
+
+## Mermaid
+
+<Mermaid>
+  graph TB
+  A[Christmas] -->|Get money| B(Go shopping)
+  B --> C[LetMeThink]
+  C -->|One| D[Laptop]
+  C -->|Two| E[iPhone]
+</Mermaid>

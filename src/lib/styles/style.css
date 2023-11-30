@@ -1,0 +1,8 @@
+.margin-note {
+    width: 200px;  /* Set the width of the image */
+    float: right;  /* Align the image to the right */
+    margin-left: 20px; /* Space between the text and the image */
+    margin-right: -220px; /* Pull the image into the right margin */
+    position: relative; /* Position relative to its normal position */
+    top: 0; /* Align the top of the image with the top of the paragraph */
+}
