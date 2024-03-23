@@ -56,15 +56,77 @@ e.g.
   X --> Y
 </Mermaid><br>
 
-2. next DAWG...
+2. [Varying confound](https://www.youtube.com/watch?v=sgqMkZeslxA&list=PLDcUM9US4XdPz-KxHM4XHt7uUVGWWVSus&index=13)
+
+<Mermaid>
+  graph LR
+  U[Neighborhood] --> Z
+  U -->Y
+  Z --> Y[Children]
+  X[Granparents] --> Z(Parents)
+  X --> Y
+  style U fill:#5343ff
+  linkStyle 1 stroke:#5343ff
+  linkStyle 0 stroke:#5343ff
+</Mermaid><br>
+
+e.g. 
+
+<Mermaid>
+  graph LR
+  q[quality] --> C
+  q --> M
+  C --> M[NAS member]
+  G[Gender] --> C[Citations]
+  G --> M
+  style q fill:#5343ff
+  linkStyle 1 stroke:#5343ff
+  linkStyle 0 stroke:#5343ff
+</Mermaid><br>
+
+3. [Oceanic tool](https://www.youtube.com/watch?v=jokxu18egu0&list=PLDcUM9US4XdPz-KxHM4XHt7uUVGWWVSus&index=10)
+
+<Mermaid>
+  graph LR
+  P[Population] --> T[Tools]
+  P --> C[Contact]
+  L[Location] --> P
+  L --> C
+  L --> T
+  C --> T
+</Mermaid><br>
+
+4. [Survival Analysis](https://www.youtube.com/watch?v=Zi6N3GLUJmw&list=PLDcUM9US4XdPz-KxHM4XHt7uUVGWWVSus&index=9)
+
+<Mermaid>
+  graph LR
+  P[Population] --> T[Tools]
+  P --> C[Contact]
+  L[Location] --> P
+  L --> C
+  L --> T
+  C --> T
+</Mermaid><br>
 
 
 <h2>The Best Models</h2>
 
-1. [Censored Cats](https://www.youtube.com/watch?v=Zi6N3GLUJmw&list=PLDcUM9US4XdPz-KxHM4XHt7uUVGWWVSus&index=9&t=4432s)
+1. [Censored Cats](https://www.youtube.com/watch?v=Zi6N3GLUJmw&list=PLDcUM9US4XdPz-KxHM4XHt7uUVGWWVSus&index=9)
+
+<div class='model-container' style="text-align: center;"> <br> <Katex math={m1}/> </div>
+
+<h2>The Best Distribution</h2>
 
 
-<div style="text-align: center;"> <Katex math={m1}/> <div>
+1. [Gamma Distribution](https://www.youtube.com/watch?v=Zi6N3GLUJmw&list=PLDcUM9US4XdPz-KxHM4XHt7uUVGWWVSus&index=10)
+
+
+|        Type         |               Description                |
+|:-------------------:|:---------------------------------------- |
+|                     | MaxEnt distributions for _waiting times_ |
+| `Generative Story`  |      X things required before event      |
+| `Outcome variables` |              days to event               |
+
 
 <style>
 
@@ -81,4 +143,13 @@ e.g.
       position: relative; /* Position relative to its normal position */
       top: 0; /* Align the top of the image with the top of the paragraph */
   }
+
+  .model-container {
+      margin: 1.5rem 0 1rem 0;
+      position: relative;
+      border: 1px solid black;
+      border-radius: 6px;
+      box-shadow: 1px 1px 30px rgba(252, 220, 252, 1);
+    }
+
 </style>

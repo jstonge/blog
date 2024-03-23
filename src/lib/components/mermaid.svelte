@@ -1,6 +1,6 @@
 <script>
   import mermaid from "mermaid";
-  import {onMount} from "svelte";
+  import { onMount } from "svelte";
 
   export let theme = 'neutral';
 

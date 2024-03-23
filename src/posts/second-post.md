@@ -40,3 +40,4 @@ This is a scatter plot created using svelte + d3. It glows. But this is CSS
   C -->|One| D[Laptop]
   C -->|Two| E[iPhone]
 </Mermaid>
+
