@@ -47,6 +47,9 @@ dependencies:
   rehype-slug:
     specifier: ^5.1.0
     version: 5.1.0
+  remark-smartypants:
+    specifier: ^2.1.0
+    version: 2.1.0
   remark-toc:
     specifier: ^8.0.1
     version: 8.0.1
@@ -763,6 +766,12 @@ packages:
     resolution: {integrity: sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==}
     dev: false
 
+  /@types/nlcst@1.0.4:
+    resolution: {integrity: sha512-ABoYdNQ/kBSsLvZAekMhIPMQ3YUZvavStpKYs7BjLLuKVmIMA0LUgZ7b54zzuWJRbHF80v1cNf4r90Vd6eMQDg==}
+    dependencies:
+      '@types/unist': 2.0.6
+    dev: false
+
   /@types/node@20.3.0:
     resolution: {integrity: sha512-cumHmIAf6On83X7yP+LrsEyUOf/YlociZelmpRYaGFydoaPdxdt80MAbu6vWerQT2COCp2nPvHdsbD7tHn/YlQ==}
     dev: false
@@ -1038,6 +1047,10 @@ packages:
   /array-back@6.2.2:
     resolution: {integrity: sha512-gUAZ7HPyb4SJczXAMUXMGAvI976JoK3qEx9v1FTmeYuJj0IBiaKttG1ydtGKdkfqWkIkouke7nG8ufGy77+Cvw==}
     engines: {node: '>=12.17'}
+    dev: false
+
+  /array-iterate@2.0.1:
+    resolution: {integrity: sha512-I1jXZMjAgCMmxT4qxXfPXa6SthSoE8h6gkSI9BGGNv8mP8G/v0blc+qFnZu6K42vTOiuME596QaLO0TP3Lk0xg==}
     dev: false
 
   /array-union@2.1.0:
@@ -2632,6 +2645,12 @@ packages:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
 
+  /nlcst-to-string@3.1.1:
+    resolution: {integrity: sha512-63mVyqaqt0cmn2VcI2aH6kxe1rLAmSROqHMA0i4qqg1tidkfExgpb0FGMikMCn86mw5dFtBtEANfmSSK7TjNHw==}
+    dependencies:
+      '@types/nlcst': 1.0.4
+    dev: false
+
   /node-fetch@2.6.9:
     resolution: {integrity: sha512-DJm/CJkZkRjKKj4Zi4BsKVZh3ValV5IR5s7LVZnW+6YMh0W1BfNA8XSs6DLMGYlId5F3KnA70uu2qepcR08Qqg==}
     engines: {node: 4.x || >=6.0.0}
@@ -2731,6 +2750,14 @@ packages:
 
   /parquet-wasm@0.5.0:
     resolution: {integrity: sha512-XN3EW+3xf915QgpxCvfCdVYsxDLXz+BckKLDlMo41cbipSYD8x+F/3lGcrWtxdY6uJgAmtb+SX3tS+9PPsplQA==}
+    dev: false
+
+  /parse-latin@5.0.1:
+    resolution: {integrity: sha512-b/K8ExXaWC9t34kKeDV8kGXBkXZ1HCSAZRYE7HR14eA1GlXX5L8iWhs8USJNhQU9q5ci413jCKF0gOyovvyRBg==}
+    dependencies:
+      nlcst-to-string: 3.1.1
+      unist-util-modify-children: 3.1.1
+      unist-util-visit-children: 2.0.2
     dev: false
 
   /path-exists@4.0.0:
@@ -2857,6 +2884,15 @@ packages:
       unist-util-visit: 4.1.2
     dev: false
 
+  /remark-smartypants@2.1.0:
+    resolution: {integrity: sha512-qoF6Vz3BjU2tP6OfZqHOvCU0ACmu/6jhGaINSQRI9mM7wCxNQTKB3JUAN4SVoN2ybElEDTxBIABRep7e569iJw==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dependencies:
+      retext: 8.1.0
+      retext-smartypants: 5.2.0
+      unist-util-visit: 5.0.0
+    dev: false
+
   /remark-toc@8.0.1:
     resolution: {integrity: sha512-7he2VOm/cy13zilnOTZcyAoyoolV26ULlon6XyCFU+vG54Z/LWJnwphj/xKIDLOt66QmJUgTyUvLVHi2aAElyg==}
     dependencies:
@@ -2897,6 +2933,41 @@ packages:
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
     dev: true
+
+  /retext-latin@3.1.0:
+    resolution: {integrity: sha512-5MrD1tuebzO8ppsja5eEu+ZbBeUNCjoEarn70tkXOS7Bdsdf6tNahsv2bY0Z8VooFF6cw7/6S+d3yI/TMlMVVQ==}
+    dependencies:
+      '@types/nlcst': 1.0.4
+      parse-latin: 5.0.1
+      unherit: 3.0.1
+      unified: 10.1.2
+    dev: false
+
+  /retext-smartypants@5.2.0:
+    resolution: {integrity: sha512-Do8oM+SsjrbzT2UNIKgheP0hgUQTDDQYyZaIY3kfq0pdFzoPk+ZClYJ+OERNXveog4xf1pZL4PfRxNoVL7a/jw==}
+    dependencies:
+      '@types/nlcst': 1.0.4
+      nlcst-to-string: 3.1.1
+      unified: 10.1.2
+      unist-util-visit: 4.1.2
+    dev: false
+
+  /retext-stringify@3.1.0:
+    resolution: {integrity: sha512-767TLOaoXFXyOnjx/EggXlb37ZD2u4P1n0GJqVdpipqACsQP+20W+BNpMYrlJkq7hxffnFk+jc6mAK9qrbuB8w==}
+    dependencies:
+      '@types/nlcst': 1.0.4
+      nlcst-to-string: 3.1.1
+      unified: 10.1.2
+    dev: false
+
+  /retext@8.1.0:
+    resolution: {integrity: sha512-N9/Kq7YTn6ZpzfiGW45WfEGJqFf1IM1q8OsRa1CGzIebCJBNCANDRmOrholiDRGKo/We7ofKR4SEvcGAWEMD3Q==}
+    dependencies:
+      '@types/nlcst': 1.0.4
+      retext-latin: 3.1.0
+      retext-stringify: 3.1.0
+      unified: 10.1.2
+    dev: false
 
   /reusify@1.0.4:
     resolution: {integrity: sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==}
@@ -3350,6 +3421,10 @@ packages:
       busboy: 1.6.0
     dev: true
 
+  /unherit@3.0.1:
+    resolution: {integrity: sha512-akOOQ/Yln8a2sgcLj4U0Jmx0R5jpIg2IUyRrWOzmEbjBtGzBdHtSeFKgoEcoH4KYIG/Pb8GQ/BwtYm0GCq1Sqg==}
+    dev: false
+
   /unified@10.1.2:
     resolution: {integrity: sha512-pUSWAi/RAnVy1Pif2kAoeWNBa3JVrx0MId2LASj8G+7AiHWoKZNTomq6LG326T68U7/e263X6fTdcXIy7XnF7Q==}
     dependencies:
@@ -3386,6 +3461,13 @@ packages:
       '@types/unist': 3.0.2
     dev: false
 
+  /unist-util-modify-children@3.1.1:
+    resolution: {integrity: sha512-yXi4Lm+TG5VG+qvokP6tpnk+r1EPwyYL04JWDxLvgvPV40jANh7nm3udk65OOWquvbMDe+PL9+LmkxDpTv/7BA==}
+    dependencies:
+      '@types/unist': 2.0.6
+      array-iterate: 2.0.1
+    dev: false
+
   /unist-util-stringify-position@2.0.3:
     resolution: {integrity: sha512-3faScn5I+hy9VleOq/qNbAd6pAx7iH5jYBMS9I1HgQVijz/4mv5Bvw5iw1sC/90CODiKo81G/ps8AJrISn687g==}
     dependencies:
@@ -3402,6 +3484,12 @@ packages:
     resolution: {integrity: sha512-0ASV06AAoKCDkS2+xw5RXJywruurpbC4JZSm7nr7MOt1ojAzvyyaO+UxZf18j8FCF6kmzCZKcAgN/yu2gm2XgQ==}
     dependencies:
       '@types/unist': 3.0.2
+    dev: false
+
+  /unist-util-visit-children@2.0.2:
+    resolution: {integrity: sha512-+LWpMFqyUwLGpsQxpumsQ9o9DG2VGLFrpz+rpVXYIEdPy57GSy5HioC0g3bg/8WP9oCLlapQtklOzQ8uLS496Q==}
+    dependencies:
+      '@types/unist': 2.0.6
     dev: false
 
   /unist-util-visit-parents@5.1.3:
