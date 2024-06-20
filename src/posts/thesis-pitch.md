@@ -1,6 +1,6 @@
 ---
 title: Thesis Pitch
-description: TLDR; here's my thesis
+description: TLDR; here's my thesis in bullet points
 date: '2024-3-24'
 slug: thesis-pitch
 categories:
@@ -13,7 +13,8 @@ published: true
 
 - How do we define, model, and measure groups is what this thesis is about.
 - By adopting a modern view of groups, we can do better science.
-- How do group thinking can change our perspective? 
+- Can different commnunities thinking about group stuff start talking to each other?
+- How do group thinking changes our perspective on particular systems? e.g. 
     - One of my favorite example is [[distributed consent]], and how shifting our view of consent from the individuals to the group level change fundamentally the problem. With the modern digital world, consent is not about individuals anymore.
     - A second example that I’ll talk more about later is that of contagion, and how groups adopt policies based on what other groups are doing. Policies is more than the sum of individuals.
 
@@ -38,12 +39,14 @@ published: true
 - do groups lie? What is the responsibility of corporations in scandals? They are relevant question today.
 - [[Paper 1: Opportunities at the interface of social ontology and higher-order network physics]]
 
+### Collectie intelligence and adaptation: complex systems get into the game
+
 ## Collective public goods; group based game theory 
 
 - Tragedy of the commons
 - The state vs the individual; Cold War redux 
 
-## how do we model groups?
+## How do we model groups?
 
 - Ideally our definition shouldn’t venture to far ahead of our modeling prowess 
 - From networks to AMES

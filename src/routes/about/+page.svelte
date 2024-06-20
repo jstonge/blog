@@ -17,6 +17,14 @@
     examining how people human biases impact the detection deepfakes in the wild, or finding 
     ways to use scientifically large language models.</p>
 
+<br>
+
+<p>Note that this blog is an experiment project using a combination of sveltekit and observable framework to 
+    bring some of my ideas to life. In some entries, you will find the 'context' in which I wrote some applications
+    that exist somewhere else in the web. I try to keep the blog the most light weight as possible,
+    providing metacommentary about some of my projects that my require computation or data storage.
+    In doing so, I also distribute the computational load of my stuff on different places.</p>
+
 <style>
     h1 {
         font-size: 40px;

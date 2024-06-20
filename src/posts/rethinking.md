@@ -4,7 +4,7 @@ description: Rethinking everything.
 date: '2023-4-14'
 categories:
   - bayesian
-published: true
+published: false
 ---
 
 <script>

@@ -1,9 +1,10 @@
 ---
-title: A physcist and philosopher walk into a bar.
-description: The physicist asks to the philosopher, what do you think are irreducible social groups? 
+title: Grontology
+description: A physicist and philosopher walk into a bar. The physicist asks to the philosopher, what do you think are irreducible social groups? 
 date: '2024-5-01'
 categories:
-  - Story telling
+  - fleeting notes
+  - story telling
 published: true
 ---
 
