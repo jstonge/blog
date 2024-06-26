@@ -1,8 +1,9 @@
 ---
-title: Computational turn and gendered science
-description: 
+title: Engendered computational science
+description: Do the computational turn will exacerbate gender bias in the traditionally more qualitative sciences?
 date: '2024-5-01'
 categories:
+  - fleeting note
   - draft
 published: true
 ---

@@ -7,7 +7,7 @@ categories:
 published: true
 ---
 
-I wrote a small [observable framework entry](https://jstonge.observablehq.cloud/hello-research-groups/results/timeline) for visualizing the evolution of both coauthors and papers for a given author. What i like about it is that we can see a wide variability of patterns of coauthorships and productivity, that we know are closely related. 
+This is a small [observable framework entry](https://jstonge.observablehq.cloud/hello-research-groups/results/timeline) for visualizing the history of ecological networks, as told by Dominique Gravel at NetSci 2024. 
 
 <br>
 <iframe
@@ -15,12 +15,10 @@ I wrote a small [observable framework entry](https://jstonge.observablehq.cloud/
   width="100%"
   height="600"
   class="crop"
-  src="https://jstonge.observablehq.cloud/hello-research-groups/results/timeline">
+  src="https://jstonge.github.io/ecology-networks-timeline/">
 </iframe>
 
-In addition to the dodge dot plots, there is a timeseries of number of coauthors, with dots colored by relative academic age of coauthors. The line is the output of a bayesian switchpoint that looks for two different poisson rates.  It works well in some cases, but not others.
-
-p.s. This project is part of a larger project of quantifying research groups in science. The source code can be found [here](https://raw.githubusercontent.com/jstonge/hello-research-groups/main/docs/results/timeline.md).
+p.s. The source code can be found [here](https://raw.githubusercontent.com/jstonge/ecology-networks-timeline/main/docs/index.md).
 
 <style type="text/css">
 

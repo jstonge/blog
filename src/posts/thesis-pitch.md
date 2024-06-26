@@ -5,7 +5,7 @@ date: '2024-3-24'
 slug: thesis-pitch
 categories:
   - Thesis
-published: true
+published: false
 ---
 
 ## Table of Contents
