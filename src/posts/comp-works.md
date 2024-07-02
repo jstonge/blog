@@ -6,6 +6,7 @@ categories:
   - fleeting note
   - draft
 published: true
+pinned: false
 ---
 
 Science is far from gender equity. Although there are more women at undergrad level, more women are leaving science later on. An interesting case study is that of computer science. Early on, women were relatively active in the field. There are many family stories describing women in the 1960s engaging in computer programming, as softwares started to emancipate itself from hardware. 

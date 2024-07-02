@@ -6,6 +6,7 @@ categories:
   - fleeting notes
   - story telling
 published: true
+pinned: false
 ---
 
 A physicist and philosopher walk into a bar. The physicist asks to the philosopher, what do you think are irreducible social groups? 

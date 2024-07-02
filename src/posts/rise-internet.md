@@ -6,6 +6,7 @@ categories:
   - fleeting notes
   - data viz
 published: true
+pinned: false
 ---
 
 This is a small [observable notebook](https://observablehq.com/@jstonge/the-spread-of-computational-thinking) for visualizing the evolution of the internet, from wikipedia. 

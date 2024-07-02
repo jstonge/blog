@@ -6,6 +6,7 @@ categories:
   - fleeting notes
   - data viz
 published: true
+published: false
 ---
 
 This is a small [observable notebook](https://observablehq.com/@jstonge/how-do-fos-evolve) for visualizing concepts in openAlex. 

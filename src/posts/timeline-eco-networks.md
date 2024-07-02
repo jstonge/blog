@@ -5,6 +5,7 @@ date: '2024-5-01'
 categories:
   - netsci-2024
 published: true
+pinned: true
 ---
 
 This is a small [observable framework entry](https://jstonge.observablehq.cloud/hello-research-groups/results/timeline) for visualizing the history of ecological networks, as told by Dominique Gravel at NetSci 2024. 

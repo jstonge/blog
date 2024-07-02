@@ -8,6 +8,7 @@ categories:
   - pan & zoom
   - d3
 published: true
+pinned: false
 ---
 
 This is a small [observable notebook](https://observablehq.com/@jstonge/computational-embeddings) for visualizing the s2orc's embeddings of papers with mention of the 'computational' keyword. 

@@ -4,9 +4,10 @@ description: Number of courses offered by department at University of Vermont
 date: '2024-5-01'
 categories:
   - fleeting notes
-  - exploration data analysis
+  - eda
   - duckDB
 published: true
+pinned: true
 ---
 
 This is a small [observable notebook](https://observablehq.com/@jstonge/uvm-course-offering-by-department) for visualizing the number of courses offered by department at University of Vermont

@@ -41,6 +41,19 @@ html {
 	--surface-4: var(--surface-4-dark);
 	--background: var(--background-dark);
 	--border: var(--border-dark);
+	
+	--highlight-color: #ff9800; /* border color */
+	--highlight-background: #fff3e0; /* background color */
+	--highlight-title: #e65100; /* title color */
+	--highlight-date: #ffcc80; /* date color */
+	--highlight-description: #ffab40; /* description color */
+	--highlight-tags: #6495ED; /* description color */
+	--highlight-glow-color: #ffc107; /* glow color */
+
+	--font-size-fluid-1: 1.2rem; /* Example size */
+	--font-size-fluid-2: 1rem;   /* Example size */
+	--font-size-fluid-3: 0.8rem; /* Example size */
+
 }
 
 @media (prefers-color-scheme: light) {
@@ -56,6 +69,18 @@ html {
 		--surface-4: var(--surface-4-light);
 		--background: var(--background-light);
 		--border: var(--border-light);
+		
+		--highlight-color: #ff9800; /* border color */
+		--highlight-background: #fff3e0; /* background color */
+		--highlight-title: #e65100; /* title color */
+		--highlight-date: #ffcc80; /* date color */
+		--highlight-description: #ffab40; /* description color */
+		--highlight-tags: #6495ED; /* description color */
+		--highlight-glow-color: #ffc107; /* glow color */
+
+		--font-size-fluid-1: 1.2rem; /* Example size */
+		--font-size-fluid-2: 1rem;   /* Example size */
+		--font-size-fluid-3: 0.8rem; /* Example size */
 	}
 }
 
@@ -158,3 +183,20 @@ li {
 	border-radius: 8px;
 	tab-size: 2;
 }
+
+.title {
+	font-size: var(--font-size-fluid-1); /* Adjust the font size as needed */
+	text-transform: capitalize;
+  }
+
+.date {
+	color: var(--text-2);
+	font-size: var(--font-size-fluid-3); /* Adjusted font size for date */
+  }
+  
+.description {
+	margin-top: var(--size-3);
+	font-size: var(--font-size-fluid-3); /* Adjusted font size for description */
+  }
+
+

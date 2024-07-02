@@ -5,6 +5,7 @@ date: '2023-4-14'
 categories:
   - bayesian
 published: false
+pinned: false
 ---
 
 <script>
