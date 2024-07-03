@@ -195,7 +195,6 @@ li {
   }
   
 .description {
-	margin-top: var(--size-3);
 	font-size: var(--font-size-fluid-3); /* Adjusted font size for description */
   }
 

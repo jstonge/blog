@@ -26,8 +26,12 @@
 <style>
 	.layout {
 		height: 100%;
+		/* width: 1200px; */
 		max-inline-size: 1440px;
 		display: grid;
+		/* display: flex; */
+		align-items: center;  /* centering the layout */
+		justify-content: center; /* centering the layout */
 		grid-template-rows: auto 1fr auto;
 		margin-inline: auto;
 		padding-inline: var(--size-7);
