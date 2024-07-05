@@ -27,9 +27,13 @@ coverImage: ../thumbnails/stories/cgs-ver-abstract.webp
 
 With cultural group selection (CGS), anthropologists seek to explain a key feature of human societies; large-scale collaboration among unrelated individuals. To solve that cooperation problem, they reframed inclusive fitness theory in terms of (cultural) multilevel selection theory. Building on cultural evolution theory, they defend the thesis that <em>group-level cultural traits</em> (i) exist and (ii) they could play a key role in explaining humans are weird, evolutionarily speaking.
 
-First, what are group-level cultural traits? This idea is best understood in terms of an  story. Bear with me. In his book on the <em>The WEIRDest People in the World</em> (that's us), Joe Henrich tells the story of how Ilahita, a traditional society from New Guinea, became extraordinarily big for that time and place (≫300 people). How? Stories. Many stories entangled with behaviors, imbued with emotional strenght, that lead to interactions among distantly related households. 
+First, what are group-level cultural traits? This idea is best understood in terms of an  story. Bear with me. In his book on the <em>The WEIRDest People in the World</em> (that's us), Joe Henrich tells the story of how Ilahita, a traditional society from New Guinea, became extraordinarily big for that time and place (≫300 people). 
+How? Stories. Many stories entangled with behaviors, imbued with emotional strenght, that lead to interactions among distantly related households. 
 
-For instance, every household raises pigs, but they find that eating their own pigs is disgusting because it would be like eating one of their own's kid. This means that groups must exchange pigs at communal ceremonies. Not only that, but those ceremonies involve rites of passage for boys to become men, which mean they can marry, learn about secret ritual knowledge, and climb the political ladder. The catch is that those rites must be performed by an opposite ritual group, meaning your success isn't solely dependent on your own group. I won't go into the details of all the norms (go read that chapter in Henrich's book, it is way better than Netflix), but they have more such as infusing terrors in their rites of passages because the Tambaran gods demand it (including going out and killing men from enemy communities), undertaking large community works (with some music-making and synchronous dance involved), and finally the ability to punish people who are doing ritual performance wrong. 
+<img src="https://raw.githubusercontent.com/jstonge/blog/main/static/tambaran-spirit-house.webp" alt="share-or-take" class="margin-note"/>
+
+For instance, every household raises pigs, but they find that eating their own pigs is disgusting because it would be like eating one of their own's kid. This means that groups must exchange pigs at communal ceremonies. Not only that, but those ceremonies involve rites of passage for boys to become men, which mean they can marry, learn about secret ritual knowledge, and climb the political ladder. 
+The catch is that those rites must be performed by an opposite ritual group, meaning your success isn't solely dependent on your own group. I won't go into the details of all the norms (go read that chapter in Henrich's book, it is way better than Netflix), but they have more such as infusing terrors in their rites of passages because the Tambaran gods demand it (including going out and killing men from enemy communities), undertaking large community works (with some music-making and synchronous dance involved), and finally the ability to punish people who are doing ritual performance wrong. 
 
 
 
@@ -53,7 +57,8 @@ Where do groups come in? Groups matter because they let you interact with indivi
 
 <style>
   .margin-note {
-      width: 200px;  /* Set the width of the image */
+      width: 300px;  /* Set the width of the image */
+      height: 500px;
       float: right;  /* Align the image to the right */
       margin-left: 20px; /* Space between the text and the image */
       margin-right: -220px; /* Pull the image into the right margin */
