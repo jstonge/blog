@@ -1,11 +1,12 @@
 ---
 title: Timeline ecological networks
 description: A short history of ecological networks
-date: '2024-5-01'
+date: '2024-2-24'
 categories:
   - netsci-2024
 published: true
-pinned: true
+pinned: false
+coverImage: https://raw.githubusercontent.com/jstonge/hello-research-groups/main/docs/assets/HenslinCh5.webp
 ---
 
 This is a small [observable framework entry](https://jstonge.observablehq.cloud/hello-research-groups/results/timeline) for visualizing the history of ecological networks, as told by Dominique Gravel at NetSci 2024. 

@@ -1,105 +1,68 @@
 <script lang="ts">
+	import Hero from './hero.svelte';
 	import { formatDate } from '$lib/utils'
+	import {goto} from '$app/navigation';
 	import * as config from '$lib/config'
 
 	export let data
-
-	// const sortedPosts = [...data.posts].sort((a, b) => b.pinned - a.pinned)
-	
 	const pinnedPosts = data.posts.filter(post => post.pinned);
-	const regularPosts = data.posts.filter(post => !post.pinned);
+	
+	// If not goto, screen scrolls to top when clicking on pinnedPost.
+	const navigateToPost = (event, slug) => {
+		event.preventDefault();
+		goto(slug, { replaceState: false, keepfocus: true, noScroll: true });
+	};
 </script>
-
-
 
 <svelte:head>
 	<title>{config.title}</title>
 </svelte:head>
 
-<section class="full-width-section">
-	
-	<!-- Pinned posts section -->
-	<div class="hero">
-		<h2>Highlight:</h2>
-	</div>
-	
-	<div class="table-header table-layout">
-		<span>Title</span>
-		<span>Date</span>
-		<span>Description</span>
-		<span>Tags</span>
-	</div>
+<Hero />
 
-	<hr class="header-divider"> 
-	
-	<div class="pinned-posts">
-		{#each pinnedPosts as post}
-		  <div class="post pinned">
-			<div class="table-layout">
-				<a href={post.slug} class="title">{post.title}</a>
-				<p class="date">{formatDate(post.date)}</p>
-				<p class="description">{post.description}</p>
-				<div class="tags">
-					{#each post.categories as category}
-						<p class="surface-4">&num;{category}</p>
-					{/each}
-				</div>
-			</div>
-		  </div>
-		{/each}
-	</div>
+<div class="hero">
+	<h3>Recent projects</h3>
+</div>
 
-	<hr class="divider">
-
-	<!-- Regular posts section -->
+<section>
 	<ul class="posts">
-		{#each regularPosts as post}
-		  <li class="post">
-			<div class="table-layout">
-			<a href={post.slug} class="title">{post.title}</a>
-			<p class="date">{formatDate(post.date)}</p>
-			<p class="description">{post.description}</p>
-			<div class="tags">
-				{#each post.categories as category}
-					<p class="surface-4">&num;{category}</p>
-				{/each}
-			</div>
-			</div>
-		  </li>
+		{#each pinnedPosts as post, i}
+			<li class="post column-wide">
+				<div class="post-content">
+					<img src={post.coverImage} alt={post.title} class="cover-image">
+					<div class="content">
+						<a 
+							href={post.slug} 
+							class="description" 
+							on:click="{(event) => navigateToPost(event, post.slug)}"
+						>{post.description}</a>
+						<p class="date">{formatDate(post.date)}</p>
+						<div class="tags">
+							{#each post.categories as category}
+								<p class="surface-4">&num;{category}</p>
+							{/each}
+						</div>
+					</div>
+				</div>
+			</li>
 		{/each}
-	  </ul>
+	</ul>
 </section>
 
 <style>
-	
-	.full-width-section {
-		width: 70rem;
-		padding: var(--size-7);
-		box-sizing: border-box;
-	}
-
-	.pinned-posts {
-		display: grid;
-		/* grid-template-columns: repeat(3, 1fr); */
-		gap: var(--size-7);
-		margin-bottom: var(--size-7);
-	}
-	
-	.table-layout {
-		width: 70rem;
-		display: grid;
-		grid-template-columns: repeat(4, 1fr);
-		gap: var(--size-7);
-		margin-bottom: var(--size-3);
-	}
 
 	.posts {
-		display: grid;
-		gap: var(--size-7);
+		padding: 0;		
 	}
 
 	.post {
-		max-inline-size: var(--size-content-7);
+		padding: var(--size-5) 0;
+		align-items: flex-start;
+		padding: 4rem 1;
+		vertical-align: baseline;
+		margin-bottom: 0.25rem;
+		box-sizing: border-box;
+
 	}
 
 	.post:not(:last-child) {
@@ -107,84 +70,67 @@
 		padding-bottom: var(--size-7);
 	}
 
-	.title {
+	.post-content {
+		display: flex;
+		max-width: 1200px;
+		margin-left: 10px;
+		padding: 0 var(--size-5);
+	}
+
+	.cover-image {
+		width: 250px;
+		height: 150px;
+		object-fit: cover;
+		border-radius: 0px;
+		border: 1px solid var(--border);
+		margin-right: var(--size-5);
+	}
+
+	.content {
+		flex: 1;
+	}
+
+	.description {
+		font-weight: 1000;
 		color:  var(--text-3-dark);
-		font-size: var(--font-size-fluid-2);
-		text-transform: capitalize;
+		font-size: var(--font-size-fluid-1);
+		margin-bottom: var(--size-2);
 	}
 
 	.date {
 		color:  var(--text-3-dark);
 		font-size: var(--font-size-fluid-2);
-	}
-
-	.description {
-		color:  var(--text-3-dark);
-		font-size: var(--font-size-fluid-2);
-	}
-	
-
-	/* Highlighting for pinned posts */
-	.post.pinned {
-		/* border: 2px solid var(--highlight-color);
-		background-color: var(--highlight-background);
-		padding: var(--size-6);
-		border-radius: var(--radius-medium);
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 10px var(--highlight-glow-color); */
-	}
-
-  .post.pinned .title {
-    color: var(--highlight-title);
-    font-weight: bold;
-  }
-
-  .post.pinned .date {
-    color: var(--highlight-date);
-  }
-
-  .post.pinned .description {
-    color: var(--highlight-description);
-  }
-
-
-  /* Divider line styling */
-	.header-divider {
-		border: none;
-		border-top: 2px solid var(--border);
-		margin: var(--size-4) 0;
-	}
-	.divider {
-		border: none;
-		border-top: 2px solid var(--border);
-		margin: var(--size-7) 0;
-	}
-
-  .hero {
-	display: flex;
-	flex-direction: column;
-	align-items: left;
-	margin: 3rem 0 1.5rem;
-	}
-
-  .hero h2 {
-	margin: 1rem 0;
-	max-width: none;
-	font-size: 1.2vw;
-	font-weight: 200;
-	line-height: 1;
+		margin-bottom: var(--size-2);
 	}
 
 	.tags {
 		margin-top: var(--size-1);
 	}
-	
+
 	.tags > * {
 		font-size: var(--font-size-fluid-3);
-		display: inline-block; /* Ensure the tag is only as wide as its content */
+		display: inline-block;
 		padding: var(--size-1) var(--size-3);
 		border: 1px solid var(--border);
 		border-radius: var(--radius-round);
-		margin: var(--size-1) var(--size-2) var(--size-1) var(--size-2); 
+		margin: var(--size-1) var(--size-2);
 	}
+
+	.hero {
+		display: flex;
+		flex-direction: column;
+		align-items: left;
+		margin: 0rem 0 2rem;
+		text-align: left;
+	}
+
+	.hero h3 {
+		font-size: 2.5vw;
+		font-weight: 300;
+		line-height: 1;
+		background: linear-gradient(90deg, #ebc7a3 0%, #87bd8b 100%);
+		-webkit-background-clip: text;
+		background-clip: text;
+		}
 
 </style>

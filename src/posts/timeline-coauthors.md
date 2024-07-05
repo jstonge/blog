@@ -6,6 +6,7 @@ categories:
   - measuring groups
 published: true
 pinned: true
+coverImage: https://raw.githubusercontent.com/jstonge/hello-research-groups/main/docs/assets/measuring.webp
 ---
 
 I wrote a small [observable framework entry](https://jstonge.observablehq.cloud/hello-research-groups/results/timeline) for visualizing the evolution of both coauthors and papers for a given author. What i like about it is that we can see a wide variability of patterns of coauthorships and productivity, that we know are closely related. 

@@ -1,12 +1,13 @@
 ---
 title: Grontology
 description: A physicist and philosopher walk into a bar. The physicist asks to the philosopher, what do you think are irreducible social groups? 
-date: '2024-5-01'
+date: '2024-1-12'
 categories:
   - fleeting notes
   - story telling
 published: true
 pinned: false
+coverImage: https://raw.githubusercontent.com/jstonge/hello-research-groups/main/docs/assets/HenslinCh5.webp
 ---
 
 A physicist and philosopher walk into a bar. The physicist asks to the philosopher, what do you think are irreducible social groups? 

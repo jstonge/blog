@@ -1,15 +1,13 @@
 ---
 title: Computational Embeddings
-description: Visualizing similarity using umap+hdbscan
-date: '2024-5-10'
+description: Group-based master equations
+date: '2024-6-20'
 categories:
-  - fleeting notes
+  - paper
   - data viz
-  - pan & zoom
-  - d3
 published: true
-pinned: false
-coverImage: https://raw.githubusercontent.com/jstonge/hello-research-groups/main/docs/assets/HenslinCh5.webp
+pinned: true
+coverImage: https://raw.githubusercontent.com/jstonge/hello-research-groups/main/docs/assets/modeling.webp
 ---
 
 This is a small [observable notebook](https://observablehq.com/@jstonge/computational-embeddings) for visualizing the s2orc's embeddings of papers with mention of the 'computational' keyword. 

@@ -1,12 +1,13 @@
 ---
 title: How do scientific concepts evolve??
 description: s2orc augmented with openAlex concepts.
-date: '2024-5-01'
+date: '2024-3-12'
 categories:
   - fleeting notes
   - data viz
 published: true
 published: false
+coverImage: https://raw.githubusercontent.com/jstonge/hello-research-groups/main/docs/assets/HenslinCh5.webp
 ---
 
 This is a small [observable notebook](https://observablehq.com/@jstonge/how-do-fos-evolve) for visualizing concepts in openAlex. 

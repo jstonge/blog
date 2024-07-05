@@ -6,6 +6,7 @@ categories:
   - bayesian
 published: true
 pinned: false
+coverImage: https://raw.githubusercontent.com/jstonge/hello-research-groups/main/docs/assets/HenslinCh5.webp
 ---
 
 I wrote a small [observable framework entry](https://jstonge.github.io/overthinking/dawgs) for keeping track of the best directed acyclic graph in McElreath's Statistical Rethinking and his set of lectures. What i like about them is that they are some kind of building blocks for causal questions that are shared across the sciences. 

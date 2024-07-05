@@ -78,9 +78,24 @@ html {
 		--highlight-tags: #6495ED; /* description color */
 		--highlight-glow-color: #ffc107; /* glow color */
 
+		--font-size-fluid-0: 2rem; /* Example size */
 		--font-size-fluid-1: 1.2rem; /* Example size */
 		--font-size-fluid-2: 1rem;   /* Example size */
 		--font-size-fluid-3: 0.8rem; /* Example size */
+
+		--color-band-0: hsl(209, 27%, 79%);
+		--color-band-1: #6495ED;
+		--color-band-2: #e65100;
+		--color-band-3: #ffc107;
+		--color-band-4: #ffcc80;
+
+		--width-column-wide: 1500px;
+		--width-column-regular: 720px;
+		--width-padded: 80vw;
+		--margin-left: 10vw;
+		--width-padded-mobile: 90vw;
+		--margin-left-mobile: 5vw;
+
 	}
 }
 
@@ -135,7 +150,8 @@ ol {
 }
 
 li {
-	padding-inline-start: 0;
+	line-height: 1.65;
+	margin-bottom: 1em;
 }
 
 .surface-1 {
@@ -198,4 +214,10 @@ li {
 	font-size: var(--font-size-fluid-3); /* Adjusted font size for description */
   }
 
-
+.column-wide {
+	max-width: var(--width-column-wide);
+	width: var(--width-padded);
+	margin: 0;
+	margin-left: var(--margin-left);
+	padding: 0;
+}

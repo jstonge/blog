@@ -1,12 +1,13 @@
 ---
 title: Engendered computational science
 description: Do the computational turn will exacerbate gender bias in the traditionally more qualitative sciences?
-date: '2024-5-01'
+date: '2024-2-01'
 categories:
   - fleeting note
   - draft
 published: true
 pinned: false
+coverImage: https://raw.githubusercontent.com/jstonge/hello-research-groups/main/docs/assets/HenslinCh5.webp
 ---
 
 Science is far from gender equity. Although there are more women at undergrad level, more women are leaving science later on. An interesting case study is that of computer science. Early on, women were relatively active in the field. There are many family stories describing women in the 1960s engaging in computer programming, as softwares started to emancipate itself from hardware. 

@@ -1,13 +1,14 @@
 ---
 title: UVM course offering by department
 description: Number of courses offered by department at University of Vermont
-date: '2024-5-01'
+date: '2023-12-12'
 categories:
   - fleeting notes
   - eda
   - duckDB
 published: true
 pinned: true
+coverImage: https://raw.githubusercontent.com/jstonge/hello-research-groups/main/docs/assets/HenslinCh5.webp
 ---
 
 This is a small [observable notebook](https://observablehq.com/@jstonge/uvm-course-offering-by-department) for visualizing the number of courses offered by department at University of Vermont

@@ -5,6 +5,7 @@ date: '2024-03-23'
 categories:
   - methods
 published: false
+coverImage: https://raw.githubusercontent.com/jstonge/hello-research-groups/main/docs/assets/HenslinCh5.webp
 ---
 
 
