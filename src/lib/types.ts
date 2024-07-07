@@ -8,4 +8,5 @@ export type Post = {
 	categories: Categories[]
 	published: boolean
 	pinned: boolean
+	coverImage: string
 }

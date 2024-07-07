@@ -13,39 +13,31 @@ coverImage: ../thumbnails/stories/cgs-ver-abstract.webp
 
 <script>
   import Katex from '$lib/components/Katex.svelte';
+  import Scrolly from "$lib/components/helpers/Scrolly.svelte"
   
+  let currentStep = 0;
+  $: console.log(currentStep)
   $: currentForm = 0;
 
   function handleClick() {
     currentForm = (currentForm + 1) % 6;
   }
 
-	const price_ineq = "\
-  \\begin{aligned}\
-     \\bar{w} \\triangle p_g = \\text{cov} (w_{g}, p_{g})+E(w_{g} \\triangle p_{g})\
-  \\end{aligned}";
+  const wbar_change_p = "\\bar{w} \\triangle p";
+  const wg_change_pg = "w_{g} \\triangle p_{g}";
+  const wig_change_pig = "w_{ig} \\triangle p_{ig}";
+  const covar_wg_pg = "\\text{cov} (w_{g}, p_{g})";
+  const covar_wig_pig = "\\text{cov} (w_{ig}, p_{ig})";
+
+	const price_wiki = "\\bar{w} \\triangle p = \\text{cov} (w_{i}, p_{i})+ E \\big(w_i \\triangle p_i)";
+	const price_diploid = "\\bar{w} \\triangle p = \\text{cov} (w_{i}, p_{i})";
+	const price_mb = "\\bar{w} \\triangle p_g = \\text{cov} (w_{g}, p_{g})+E\\big[\\text{cov} (w_{ig}, p_{ig})\\big]";
 	
-  const price_ineq_nestd = "\
-  \\begin{aligned}\
-     \\bar{w} \\triangle p &= \\text{cov} (w_{g}, p_{g}) + E(\\text{cov}(w_{ig}, p_{ig}))\\\\\
-                           &= \\text{var}(p_g)\\beta(w_g,p_g)+E(var(p_{ig})\\beta(w_{ig},p_{ig}))\
-  \\end{aligned}";
 	
   const price_ineq_gardner = "\
   \\begin{aligned}\
      \\triangle E_{i\\in I}(z_i) = \\text{cov}_{i\\in I} (w_{i}, z_{i})+ E_{i \\in I}(w_{i} \\triangle z_i)\
   \\end{aligned}";
-  
-  const price_ineq_mixed = "\
-  \\begin{aligned}\
-     \\bar{w} \\triangle p = E(p_i w_i)-E(p_i)E(w_i)=\\text{cov}(w_i,p_i)\
-  \\end{aligned}";
-	
-  const hamilton_rule = "\
-  \\begin{aligned}\
-     rb > c\
-  \\end{aligned}";
-
 
 </script>
 
@@ -65,8 +57,91 @@ From a network perspective, the idea of exchanging pigs with other groups does n
 
 #### Cultural group selection, actually
 
-The most straighforward way to understand cultural group selection is by going back to its inception; population genetics. Population genetic models are all about keeping track of copies of different alleles that might increase or decrease fitness. 
 
+We introduce cultural group selection by going back to its inception; population genetics. Population genetic models are all about keeping track of copies of different alleles that might increase or decrease fitness under the effect of natural selection. A key model is the Price equation:
+
+<div class="parent-container">
+  <div class='model-container' style="text-align: center;"> <br> <Katex math={price_wiki}/> 
+  <br><small><a href="https://en.wikipedia.org/wiki/Price_equation">Price equation</a></small>
+  </div>
+</div>
+
+
+<div class="margin-note">
+  Recall that covariance can be written as <Katex math={"\\text{cov}(w_i,p_i) = E(p_i w_i) - E(p_i)E(w_i)"}/>, which makes clear that change in traits and fitness is the expectation over the two - the product of the expectation of the traits and fitness.
+</div> 
+where <em>wᵢ</em> is the fitness and pᵢ is the trait value. When assuming that natural selection is allele frequency of diploid individuals (two sets of chromosome only), together with low mutation rate, Price's equation reduced to <Katex math={price_diploid}/>, which is even simpler. It says that the average fitness times the change in traits is given by the covariance of the individual fitness and individual allele frequency. See the wiki for the details.
+
+
+Now, cultural evolutionist make the following bold move:
+
+<div>
+
+</div>
+
+<!-- <div class="margin-note">
+  <Katex math={"\
+    \\begin{aligned}\
+    \\bar{w} \\triangle p &= \\sum_g \\frac{n_g}{N} w_g(p_g-p)\\\\\
+                          &+ \\sum_g\\frac{n_g}{N}w_g(p_g^\\prime-p_g)\
+    \\end{aligned}\
+  "}/>
+</div> -->
+
+<br><br>
+<section>
+	<div class="steps">
+		<Scrolly bind:value={currentStep}>
+        <div class='step' class:active={currentStep === 0}>
+            <div class='margin-note'> 
+              <Katex math={wbar_change_p}/> = <span style="color:red;"><Katex math={covar_wg_pg}/></span> + <Katex math={"E("+wg_change_pg+")"}/>
+            </div>
+          Covariance between allele frequence in g & mean fitness in group g
+        </div>
+        <div class='step' class:active={currentStep === 1}>
+            <div class='margin-note'>
+                <Katex math={wbar_change_p}/> = <Katex math={covar_wg_pg}/> + <span style="color:red;"><Katex math={"E("+wg_change_pg+")"}/></span>
+            </div>
+            Avg change within groups in the pop
+        </div>
+        <div class='step' class:active={currentStep === 2}>
+            <div class='margin-note'>
+                <Katex math={wg_change_pg} class='margin-note'/>
+                =
+                <span style="color:red;"><Katex math={covar_wig_pig}/></span>
+                +
+                <Katex math={"E("+wig_change_pig+")"}/>
+            </div>
+            Avg change within groups in the pop
+        </div>
+        <div class='step' class:active={currentStep === 3}>
+            <div class='margin-note'>
+                <Katex math={wg_change_pg} class='margin-note'/>
+                =
+                <Katex math={covar_wig_pig}/>
+                +
+                <span style="color:red;"><Katex math={"E("+wig_change_pig+")"}/></span>
+            </div>
+            Avg change within groups in the pop
+        </div>
+        <div class='step' class:active={currentStep === 4}>
+            <div class='margin-note'>
+                <Katex math={wbar_change_p}/> = <span style="color:red;"><Katex math={covar_wg_pg}/></span> + <Katex math={"E("+covar_wig_pig+")"}/>
+            </div>
+            Avg change within groups in the pop
+        </div>
+        <div class='step' class:active={currentStep === 5}>
+            <div class='margin-note'>
+                <Katex math={wbar_change_p}/> = <Katex math={covar_wg_pg}/> + <span style="color:red;"><Katex math={"E("+covar_wig_pig+")"}/></span>
+            </div>
+            Avg change within groups in the pop
+        </div>
+		</Scrolly>
+	</div>
+</section>
+
+
+#### The many interpretations of Price's equation
 
 <br>
 <button on:click={() => handleClick()}>Toggle Price's Interpretation</button>
@@ -87,32 +162,14 @@ The most straighforward way to understand cultural group selection is by going b
 
 <div class="parent-container">
   <div class='model-container' style="text-align: center;"> <br> <Katex math={price_ineq}/> 
-  <br><small>(Price equation with subpopulations as groups of individuals. The term on the RHS is the expectation of the product of the change in allele frequency in group <em>g</em> and mean fitness in group <em>g</em>; McElreath & Boyd 2008 p.231)</small>
+  <br><small>(Price equation with subpopulations as groups of individuals; McElreath & Boyd 2008 p.231)</small>
   </div>
 </div>
 
 <p>In a nutshell, we are thinking about the assemblage of two different population, and how the first assemblage maps onto the second after a single timestep. As Gardner says, it shows the driving forces behind evolution. We have the unit of selection, or the "particle" type indexed by <em>i</em>. There is the arena of selection, which is the aggregation unit notated by <em>l</em>. There is the character under selection, which is notated by <em>z</em>. And there is the target of selection, which is notated by <em>w</em>. This is the thing whose covariance with <em>z</em> drive natural selection.</p>
 
+
 {:else if currentForm == 3}
-
-<div class="parent-container">
-  <div class='model-container' style="text-align: center;"> <br> <Katex math={price_ineq_mixed}/> 
-  <br><small>(Special form of the price equation with diploid individuals, aka number of 'particles' in 'subpopulations' is always 2. Thus, average change in allele frequency within individuals tends to zero; McElreath & Boyd 2008, see p.229)</small>
-  </div>
-</div>
-
-<p>In a nutshell, we are thinking about the assemblage of two different population, and how the first assemblage maps onto the second after a single timestep.</p>
-
-{:else if currentForm == 4}
-
-<div class="parent-container">
-  <div class='model-container' style="text-align: center;"> <br> <Katex math={price_ineq_nestd}/> 
-  <br><small>(Change in frequency of the allele where we first average across individuals within groups, then across groups within the population. The second line shows the regression of individual/group fitness on individual/group allele frequency. Selection occurs when there is variation in character value. No meiotic drive and ignored mutation were assumed. McElreath & Boyd 2008, see p.231)</small>
-  </div>
-</div>
-
-<p>In a nutshell, we are thinking about the selection within and between groups with this expression. To have altruism, you need variation among groups, aka large <em>var(p<sub>g</sub>)</em>, while variance within groups is small..</p>
-{:else if currentForm == 5}
 
 <div class='model-container' style="text-align: center;"> <br>
     <div>Change in the average character value between parent and offspring</div> = <div>Covariance of fitness and character value across parents (selection)</div> - <div>Average of the product of fitness and the character difference between parent and offspring (non-selective transmission)</div><small>Gardner</small>
@@ -130,16 +187,6 @@ The most straighforward way to understand cultural group selection is by going b
 
 {/if}
 
-
-<!-- <div class="margin-note">
-  <Katex math={"\
-    \\begin{aligned}\
-    \\bar{w} \\triangle p &= \\sum_g \\frac{n_g}{N} w_g(p_g-p)\\\\\
-                          &+ \\sum_g\\frac{n_g}{N}w_g(p_g^\\prime-p_g)\
-    \\end{aligned}\
-  "}/>
-</div> -->
-
 #### I want more!
 
 Cultural group selection is connected to the following topics in McElreath & Boyd's book:
@@ -149,25 +196,28 @@ Cultural group selection is connected to the following topics in McElreath & Boy
 - Costly signal theory; what if people fake their intent (ch.5.1)
 
 
-<style>
-  .margin-note {
-      width: 300px;  /* Set the width of the image */
-      height: 500px;
-      float: right;  /* Align the image to the right */
-      margin-left: 20px; /* Space between the text and the image */
-      margin-right: -220px; /* Pull the image into the right margin */
-      position: relative; /* Position relative to its normal position */
-      top: 0; /* Align the top of the image with the top of the paragraph */
-  }
 
-  .parent-container {
+<style>
+
+  /* Style for margin note */
+.margin-note {
+    width: 300px;  /* Set the width of the image */
+    float: right;  /* Align the image to the right */
+    margin-left: 20px; /* Space between the text and the image */
+    margin-right: -300px; /* Pull the image into the right margin */
+    position: relative; /* Position relative to its normal position */
+    top: 0; /* Align the top of the image with the top of the paragraph */
+}
+
+/* Parent container style */
+.parent-container {
     display: flex;
     justify-content: center; /* Center horizontally */
     align-items: center;    /* Center vertically */
-  }
+}
 
-  
-  .model-container {
+/* Model container style */
+.model-container {
     font-size: var(--font-size-fluid-1);
     padding-left: 2rem;
     padding-right: 2rem;
@@ -177,5 +227,47 @@ Cultural group selection is connected to the following topics in McElreath & Boy
     border-radius: 6px;
     box-shadow: 1px 1px 30px rgba(0, 0, 0, 1);
     display: inline-block;
-  }
+}
+
+/* Scrollytelling stuff */
+
+.step {
+    height: 30vh;
+    opacity: 0.3;
+}
+
+.step.active {
+    opacity: 1;
+}
+
+section {
+    position: relative;
+}
+
+.steps {
+    position: relative;
+    z-index: 2;
+}
+
+.sticky {
+    position: sticky;
+    margin-top: 30px;
+    height: 90vh;
+    top: 5vh; /* (100vh - 90vh) / 2 */
+    z-index: 1;
+    margin-bottom: 1rem;
+    /* width: 100px;  Set the width to a fixed value */
+    float: right;  /* Align the image to the right */
+}
+
+.reference-step {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 1rem;
+}
+  
 </style>
+
+
+
