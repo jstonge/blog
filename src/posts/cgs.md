@@ -219,6 +219,9 @@ Cultural group selection is connected to the following topics in McElreath & Boy
   - Altruistic punishment; second-order dilemma (punishing those who failed to punish; ch. 4.5.2). Second-order dilemma could be a nice use of adaptive higher-order interactions.
   - More generally, n-person games (ch.4.5.1) and repeated interactions (ch. 4.1.1)
 - Costly signal theory; what if people fake their intent (ch.5.1)
+- <a href="https://sci-hub.ru/10.1006/jtbi.2001.2515">Group Beneficial Norms Can Spread Rapidly in a Structured Population (Boyd & Richerson 2002)</a>
+- <a href="https://www.pnas.org/content/pnas/114/23/6068.full.pdf">Collective action and the evolution of social norm internalization (Gavrilets & Richerson 2017)</a>
+- <a href="https://scholar.harvard.edu/files/henrich/files/what_makes_us_smart_final.pdf">What makes us smart? (Henrich & Muthukrishna 2023)</a>
 
 In the next part of the series, we look at how CGS can relate to group-based master equations.
 <style>
