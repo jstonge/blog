@@ -89,6 +89,8 @@ html {
 		--color-band-3: #ffc107;
 		--color-band-4: #ffcc80;
 
+		--theme-green: #37ad4e;
+
 		--width-column-wide: 1500px;
 		--width-column-regular: 720px;
 		--width-padded: 80vw;
@@ -221,3 +223,25 @@ li {
 	margin-left: var(--margin-left);
 	padding: 0;
 }
+
+.tip {
+    border-left: solid 1px;
+    border-radius: 0 4px 4px 0;
+    padding: 1rem 2rem;
+    margin: 1rem 0;
+    box-sizing: border-box;
+    max-width: 640px;
+    border-left-color: var(--theme-green); /* Green border */
+    background-color: color-mix(in srgb,var(--theme-green), 90%);;
+  }
+
+.caution {
+    border-left: solid 1px;
+    border-radius: 0 4px 4px 0;
+    padding: 1rem 2rem;
+    margin: 1rem 0;
+    box-sizing: border-box;
+    max-width: 640px;
+    border-left-color: var(--color-band-4); /* Green border */
+    background-color: color-mix(in srgb,var(--color-band-4), 90%);;
+  }

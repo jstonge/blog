@@ -7,7 +7,7 @@ categories:
   - eda
   - duckDB
 published: true
-pinned: true
+pinned: false
 coverImage: https://raw.githubusercontent.com/jstonge/hello-research-groups/main/docs/assets/HenslinCh5.webp
 ---
 
