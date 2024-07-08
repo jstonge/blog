@@ -69,7 +69,7 @@ html {
 		--surface-4: var(--surface-4-light);
 		--background: var(--background-light);
 		--border: var(--border-light);
-		
+
 		--highlight-color: #ff9800; /* border color */
 		--highlight-background: #fff3e0; /* background color */
 		--highlight-title: #e65100; /* title color */

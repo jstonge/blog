@@ -1,7 +1,6 @@
 <script>
   import { onMount } from 'svelte';
   import { fade, fly } from 'svelte/transition';
-  import { windowHeight } from "../stores/global.js";
 
   let visible = false;
   onMount(() => {
@@ -10,7 +9,7 @@
 </script>
 
 <section 
-  style="min-height: {$windowHeight ? `${$windowHeight * 1.01}px` : '101vh'}; perspective: 100vw;" 
+  style="perspective: 100vw;" 
   class="banner" 
   id="home">
   <div class="hero-container">
