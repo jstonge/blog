@@ -1,16 +1,10 @@
 <script lang="ts">
     import Hero from './hero.svelte';
     import { formatDate } from '$lib/utils'
-    import { goto } from '$app/navigation';
     import * as config from '$lib/config'
 
     export let data;
     const pinnedPosts = data.posts.filter(post => post.pinned);
-
-    const navigateToPost = (event, slug) => {
-        event.preventDefault();
-        goto(slug, { replaceState: false, keepfocus: true, noScroll: true });
-    };
 </script>
 
 <svelte:head>
@@ -20,7 +14,7 @@
 <Hero />
 
 <div class="hero">
-    <h3>Recent projects</h3>
+    <h3>Selected projects</h3>
 </div>
 
 <section>
@@ -30,11 +24,7 @@
                 <div class="post-content">
                     <img src={post.coverImage} alt={post.title} class="cover-image">
                     <div class="content">
-                        <a 
-                            href={post.slug} 
-                            class="description" 
-                            on:click="{(event) => navigateToPost(event, post.slug)}"
-                        >{post.description}</a>
+                        <a href={post.slug} class="title">{post.description}</a>
                         <p class="date">{formatDate(post.date)}</p>
                         <div class="tags">
                             {#each post.categories as category}

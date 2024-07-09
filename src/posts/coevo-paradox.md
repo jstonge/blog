@@ -1,6 +1,6 @@
 ---
-title: Computational Embeddings
-description: Group-based master equations
+title: Paradoxes in the co-evolution of contagions and institutions
+description: Using group-based master equations to model the coevolution of policies and behaviors in contagion.
 date: '2024-6-20'
 categories:
   - paper
@@ -10,7 +10,7 @@ pinned: true
 coverImage: https://raw.githubusercontent.com/jstonge/hello-research-groups/main/docs/assets/modeling.webp
 ---
 
-This is a small [observable notebook](https://observablehq.com/@jstonge/computational-embeddings) for visualizing the s2orc's embeddings of papers with mention of the 'computational' keyword. 
+With our paper being published in [Royal Society B](https://royalsocietypublishing.org/journal/rspb), I finally decided to do a small [observable framework](https://joint-lab.observablehq.cloud/hello-gmes/) compiling the main takeaways of our group-based formalism to study contagion. 
 
 <br>
 <iframe width="100%" height="600px" frameborder="0" class="crop"

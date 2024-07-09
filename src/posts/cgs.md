@@ -7,7 +7,7 @@ categories:
   - game theory
 published: true
 pinned: true
-coverImage: ../thumbnails/stories/cgs-ver-abstract.webp
+coverImage: https://raw.githubusercontent.com/jstonge/blog/main/thumbnails/stories/cgs-ver-abstract.webp
 ---
 
 <script>
