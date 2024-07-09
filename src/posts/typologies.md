@@ -1,5 +1,5 @@
 ---
-title: Group typologies
+title: Group typologies (WIP)
 description: Compile all the (social) groups
 date: '2024-07-08'
 categories:
@@ -43,11 +43,16 @@ coverImage: ../thumbnails/stories/cgs-ver-abstract.webp
 	let height = 400;
 </script>
 
-There as many ways to describe social groups that there are field of studies out there. This diversity has led some people to say that building a parsimonious group typlogy is <a href="https://www.researchgate.net/publication/315973440_What_are_social_groups_Their_metaphysics_and_how_to_classify_them">hopeless</a>. That, grouping of humans are made up  anyway, and as such the exercice of grouping people is a political act (Boyer p.56). Alternatively, we can follow <a href="https://doi.org/10.1007%2Fs11229-016-1185-y">Amy Thomasson (2016)</a> and say that, yes, groups exists. We go to clubs and union meetings. Instead, we can ask: what if social groups concepts serve a purpose in giving a normative structure to our collective lives. 
+There are as many ways to describe social groups that there are field of studies out there. This diversity has led some people to say that building a parsimonious group typlogy is <a href="https://www.researchgate.net/publication/315973440_What_are_social_groups_Their_metaphysics_and_how_to_classify_them">hopeless</a>. That, grouping of humans are made up  anyway, and as such the exercice of grouping people is in itself a political act (Boyer p.56). Alternatively, we can follow <a href="https://doi.org/10.1007%2Fs11229-016-1185-y">Amy Thomasson (2016)</a> and assume that, yes, groups exist. We go to clubs and union meetings. They seem pretty real. But instead we ask: what if social groups concepts (themselves) serve a purpose in giving a normative structure to our collective lives. 
 
-We review how different field of studies have looked at social groups, but looking through the lens of network science. Because networks is just are low quality representations of our phenomenoligcal lives, I seek to point out where they fail miserably at capturing what social scientists like to talk about. 
+We review how different field of studies have looked at social groups, looking through the lens of network science. Because networks are just low quality representations of our phenomenological lives, I point out where they fail at capturing what social scientists like to talk about. 
+
+<div class="margin-note" style="border-radius: 6px; border: 1px solid black; padding: 0.5rem;">
+TODO: Add widget to toggle between simple and higher-order networks.
+</div>
 
 ## Flatland
+
 
 <section>
 	<div class="steps">
@@ -57,7 +62,7 @@ We review how different field of studies have looked at social groups, but looki
           <div class="margin-note ">
             <ScatterPlot {coords} width={400} height={400} />
           </div>
-          <p><span class="small">Group size</span>: How many people you can you reach in your social network? How many intimate people, aka your Dunbar's number?</p>
+          <p><span class="small">Group size</span>: How many people you can you reach in your social network? How many people would you be willing to ask to come help on moving's day, aka your Dunbar's number? <em>Related formalism: n-player games, ...</em></p>
         </div>
         <div class='step' class:active={currentStep === 1}>
         <div class="margin-note ">
@@ -71,10 +76,10 @@ We review how different field of studies have looked at social groups, but looki
         <div class="margin-note ">
           <PersistenceNetwork {coords} {edges} width={400} height={400} />
         </div>
-          <p><span class="small">Persistence</span>: the lenght of interactions.</p>
+          <p><span class="small">Persistence</span>: the duration of your (face-to-face?) interactions.</p>
         </div>
         <div class='step' class:active={currentStep === 3}>
-        <p><span class="small">Repetition</span>: repeated interactions is very different from the lenght of interactions.</p>          
+        <p><span class="small">Repetition</span>: the number of times an interaction happened over a period of time. Covary with persistence. <em>Related formalism: repeated games, burstiness</em></p>          
         </div>
         <div class='step' class:active={currentStep === 4}>
         <p><span class="small">Synchrony</span>: How nodes fire together.</p>
@@ -86,10 +91,13 @@ We review how different field of studies have looked at social groups, but looki
         <p><span class="small">Differentiation</span>: How components of the systems have different (functional) roles.</p>
         </div>
         <div class='step' class:active={currentStep === 6}>
+        <p><span class="small">Context-dependence</span>: Node- and edge-features depend on what is happening on the network.</p>
+        </div>
+        <div class='step' class:active={currentStep === 7}>
         <div class="margin-note ">
           <BoundariesNetwork {coords} {edges} width={400} height={400} />
         </div>
-        <p><span class="small">Boundaries</span>: Porosity of what comes in and out of a group.</p>
+        <p><span class="small">Boundaries</span>: Porosity of what comes in and out of a group. <em>Related formalism: multilevel selection theory, </em></p>
         </div>
         <!-- #########################
              #  INTENTIONALITY LAYER #
@@ -111,22 +119,22 @@ We review how different field of studies have looked at social groups, but looki
         <!-- #########################
              #  INTENTIONALITY LAYER #
              ######################### -->
-        <div class='step' class:active={currentStep === 7}>
+        <div class='step' class:active={currentStep === 8}>
         <div class="margin-note ">
           <SimpleNetwork {coords} {edges} width={400} height={400} />
         </div>
         <p><span class="small">Institutional strength & formalism</span>: institutions are group-level behaviors or beliefs that shape individual lives. These are higher-order interactions in the sense that this is a dynamics that involve groups. A group that experience <em>institutionalization</em> is a group that exhibit stronger, more formal institutions. It lives in a 2D plane because I do not want to claim that informal norms are less "strong".</p>
         </div>
-        <div class='step' class:active={currentStep === 8}>
+        <div class='step' class:active={currentStep === 9}>
         <p><span class="small">Collective Intentionality</span>: Aboutness of groups, which might or might not be aligned with that of individuals.</p>        
         </div>
-        <div class='step' class:active={currentStep === 9}>
+        <div class='step' class:active={currentStep === 10}>
         <div class="margin-note ">
           <SimpleNetwork {coords} {edges} width={400} height={400} />
         </div>
         <p><span class="small">Cognitive diversity</span>: Related to differentiation, but not reducible to it. We define cognitive diversity as sets of sociotechnical expertises and know-hows that interact in a way that is more than the sum of its part. This is the secret sauce of teams that are (actively?) driven by a shared goal.</p>
         </div>
-        <div class='step' class:active={currentStep === 10}>
+        <div class='step' class:active={currentStep === 11}>
         <p><span class="small">Presence (experimental)</span>: Most of what I discussed about is derived from some literature. Here I am making this up to distinguish face-to-face from impersonal interactions. With impersonal interactions, I summon the idea of "presence in absence" (I think this is from Heidegger, but shhh). Some people (aka Searle) call that the "we-" attitude (that is in the mind of the beholder).</p>
         </div>
     </Scrolly>
@@ -152,6 +160,8 @@ Although it is depend on the time and place, it is not rare than tribes are at w
 Sociologists are generally interested in the ways in which individuals are shaped by modern institutions, leading to all sorts of WEIRD behaviors such as suicidal epidemics and work ethics. They are interested in what happens to individuals in larger groups, that include more <span class="small">formal</span> institutions such as Western schooling systems and big religion. 
 
 Like anthropology, sociologists have turned their gaze back on our scientific institutions. They are interested in the scientific enterprise as a WEIRD voluntary organization that has specific patterns in interconnectedness that ought to be based on shared scientific interests over kinships. They discs the emergence of formal and informal norms such as peer review, respecting big man with many citations, traveling for conferences, diminishing the values of paid works over passions, and so on.
+
+WIP
 
 <style>
   .small {
