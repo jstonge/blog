@@ -163,9 +163,6 @@
       vertical-align: baseline;
   }
 
-  .underscore {
-    text-decoration: underline;
-  }
 
   :global(del) {
     text-decoration: none;

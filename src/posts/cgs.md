@@ -303,18 +303,4 @@ section {
     right: 0;
     padding: 1rem;
 }
-
-
 </style>
-
-
-
-<!-- <div class="margin-note">
-  <br><br>
-  <Katex math={"\
-    \\begin{aligned}\
-    \\bar{w} \\triangle p &= \\sum_g \\frac{n_g}{N} w_g(p_g-p)\\\\\
-                          &+ \\sum_g\\frac{n_g}{N}w_g(p_g^\\prime-p_g)\
-    \\end{aligned}\
-  "}/>
-</div> -->

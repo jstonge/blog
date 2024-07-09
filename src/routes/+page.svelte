@@ -77,13 +77,6 @@
         flex: 1;
     }
 
-    .description {
-        font-weight: 1000;
-        color: var(--text-3-dark);
-        font-size: var(--font-size-fluid-1);
-        margin-bottom: var(--size-2);
-    }
-
     .date {
         color: var(--text-3-dark);
         font-size: var(--font-size-fluid-2);
