@@ -31,11 +31,16 @@ coverImage: ../thumbnails/stories/cgs-ver-abstract.webp
 
   let Bahrami2022Z = new Cite("10.2139/ssrn.4200629").format('citation', {format: 'html'})
   let ThomassonOnto2016 = new Cite("10.1007/s11229-016-1185-y").format('citation', {format: 'html'})
+  let Battiston2020 = new Cite("10.1016/j.physrep.2020.05.004").format('citation', {format: 'html'})
   
   
   let currentStep = 0;
-  
+  let currentForm = 1;
   let isHONs = false;
+
+  function handleClick() {
+    currentForm = (currentForm + 1) % 3;
+  } 
 
 	const coords = [
 		{ x: 0,   y: 134, r:10, i:0, group: "red",   type: "circle" },
@@ -43,6 +48,20 @@ coverImage: ../thumbnails/stories/cgs-ver-abstract.webp
 		{ x: 87,  y: -87, r:10, i:2, group: "green", type: "square" },
 		{ x: -23, y: 78,  r:10, i:3, group: "red",   type: "circle" },
 		{ x: -85, y: 0,   r:10, i:4, group: "red",   type: "square"},
+		{ x: 104, y: 32,  r:10, i:5, group: "red",   type: "square" },
+    { x: 87,  y: -27, r:10, i:2, group: "green", type: "square" }
+	];
+	
+  // colors=hyperedges; duplicated nodes. Hull don't draw pairwise edges...
+  const coords_hons = [
+		{ x: 0,   y: 134, r:10, i:0, group: "red",   type: "circle" },
+		{ x: 43,  y: -33, r:10, i:1, group: "yellow", type: "square"},
+		{ x: 43,  y: -33, r:10, i:1, group: "green", type: "square"},
+		{ x: 87,  y: -87, r:10, i:2, group: "green", type: "square" },
+		{ x: -23, y: 78,  r:10, i:3, group: "red",   type: "circle" },
+		{ x: -85, y: 0,   r:10, i:4, group: "yellow",   type: "square"},
+		{ x: -85, y: 0,   r:10, i:4, group: "red",   type: "square"},
+		{ x: 104, y: 32,  r:10, i:5, group: "yellow",   type: "square" },
 		{ x: 104, y: 32,  r:10, i:5, group: "red",   type: "square" },
     { x: 87,  y: -27, r:10, i:2, group: "green", type: "square" }
 	];
@@ -54,6 +73,7 @@ coverImage: ../thumbnails/stories/cgs-ver-abstract.webp
       { s: 4, t: 3 },
       { s: 3, t: 5 },
       { s: 1, t: 6 },
+      { s: 1, t: 4 },
       { s: 2, t: 6 },
       { s: 4, t: 5 },
       { s: 1, t: 5 }
@@ -72,6 +92,7 @@ coverImage: ../thumbnails/stories/cgs-ver-abstract.webp
 		.domain([Math.min(...coords.map(d => d.y)), Math.max(...coords.map(d => d.y))])
 		.range([height - padding.bottom, padding.top]);
   
+  $: console.log(currentForm)
 </script>
 
 There are as many ways to describe social groups that there are field of studies out there. This diversity has led some people to say that building a parsimonious group typlogy is <a href="https://www.researchgate.net/publication/315973440_What_are_social_groups_Their_metaphysics_and_how_to_classify_them">hopeless</a>. That, grouping of humans are made up  anyway, and as such the exercice of grouping people is in itself a political act (Boyer p.56). Alternatively, we can follow <a href="https://doi.org/10.1007%2Fs11229-016-1185-y">{ThomassonOnto2016}</a> and assume that, yes, groups exist. We go to clubs and union meetings. They seem pretty real. But instead we ask: what if social groups concepts (themselves) serve a purpose in giving a normative structure to our collective lives. 
@@ -79,7 +100,13 @@ There are as many ways to describe social groups that there are field of studies
 We review how different field of studies have looked at social groups, looking through the lens of network science. Because networks are just low quality representations of our phenomenological lives, I point out where they fail at capturing what social scientists like to talk about. 
 
 <div class="margin-note" style="display: flex; justify-content: center; align-items: center;">
-<button on:click={() => (isHONs = !isHONs)}>Make it {isHONs ? "simpler" : "higher-order"}</button>
+  {#if currentForm === 0} 
+  <button on:click={() => handleClick()}>Make it a network </button>
+  {:else if currentForm === 1}
+  <button on:click={() => handleClick()}>Make it higher-order </button>
+  {:else if currentForm == 2}
+  <button on:click={() => handleClick()}>Make it simpler</button>
+  {/if}
 </div>
 
 ## Flatland
@@ -87,102 +114,140 @@ We review how different field of studies have looked at social groups, looking t
 <section>
 	<div class="steps">
 		<Scrolly bind:value={currentStep}>
-        <!-- PAIRWISE STRUCTURE -->
+        <!-- 1. SCATTERPLOT-->
         <div class='step' class:active={currentStep === 0}>
-          {#if isHONs}
-          {:else}
+          {#if currentForm === 0}
           <div class="margin-note ">
             <ScatterPlot {coords} {width} {height} />
           </div>
           {/if}
           <p><span class="small">Group size</span>: How many people you can you reach in your social network? How many people would you be willing to ask to come help on moving's day, aka your Dunbar's number? <em>Related formalism: n-player games, ...</em></p>
         </div>
+        <!-- 2. INTERCONNECTEDNESS -->
         <div class='step' class:active={currentStep === 1}>
-        {#if isHONs}
-        <div class="margin-note ">
-        <div class="chart">
-          <ObservablePlot 
-            options={{ axis: null, height, width, margin: 10,
-              marks: [
-                  Plot.text(coords, {
-                      x: d=>xScale(d.x)+10, y: d=>yScale(-d.y)+13, label: "i", fontSize: 10  }),
-                  Plot.hull(coords, {
-                      x: d=>xScale(d.x), y: d=>yScale(-d.y), fill: "group", fillOpacity: 0.2, strokeWidth: 2,
-                      }),
-                  Plot.dot(coords, {
-                      x: d=>xScale(d.x), y: d=>yScale(-d.y), r: 4, stroke: "black", fill: "grey" })
-              ]
-          }} />
+        {#if currentForm === 2}
+          <div class="margin-note ">
+            <div class="chart">
+              <ObservablePlot 
+              options={{ axis: null, height, width, margin: 10,
+                marks: [
+                    Plot.text(coords, {
+                        x: d=>xScale(d.x)+10, y: d=>yScale(-d.y)+13, label: "i", fontSize: 10  }),
+                    Plot.hull(coords_hons, {
+                        x: d=>xScale(d.x), y: d=>yScale(-d.y), fill: "group", fillOpacity: 0.2, strokeWidth: 2,
+                        }),
+                    Plot.dot(coords, {
+                        x: d=>xScale(d.x), y: d=>yScale(-d.y), r: 4, stroke: "black", fill: "grey" })
+                ]
+            }} />
+            </div>
           </div>
-        </div>
-        <p><span class="small">Interconnectedness</span>: With higher-order networks, we now have two hyperedges; we assume that the interactions involved more than two people at once. This is the difference between assuming a paper is a set of pairiwise interactions versus a group effort.</p>
+          <p><span class="small">Interconnectedness</span>: Metrics on higher-order networks are slightly different. In this case, we now have three hyperedges; each interaction involved more than two people at once. This is the key idea of higher-order representation, we are assuming that the interaction is a group effort that is non-reducible to the set of pairwise interactions.</p>
+        {:else if currentForm === 1}
+          <div class="margin-note ">
+            <SimpleNetwork {coords} {edges} {width} {height} />
+          </div>
+          <p><span class="small">Interconnectedness</span>: Fancy word to talk about the structure of interactions, which in network science we refer as local and global network properties.
+          </p>
         {:else}
-        <div class="margin-note ">
-          <SimpleNetwork {coords} {edges} {width} {height} />
-        </div>
-        <p><span class="small">Interconnectedness</span>: Fancy word to talk about the structure of interactions, which in network science we refer as local and global network properties.
-        </p>
+          <p style="opacity:0.3;"><span class="small">Interconnectedness</span>: Fancy word to talk about the structure of interactions, which in network science we refer as local and global network properties.
+          </p>
         {/if}
         </div>
-        <!-- PAIRWISE DYNAMICS -->
-        <div class='step' class:active={currentStep === 2}>
-        <div class="margin-note ">
-          {#if isHONs}
-          {:else}
-            <PersistenceNetwork {coords} {edges} width={400} height={400} />
+        <!-- 3. PersistenceNetwork -->
+        {#if currentForm === 1}
+          <div class='step' class:active={currentStep === 2}>
+          <p><span class="small">Persistence</span>: the duration of your interactions. But what do we mean. Does the interaction represents the duration of the face-to-face interactions, or long-lasting relationships (in the aggregate). It depends on the network interpretation.</p>
+          <div class="margin-note ">
+              <PersistenceNetwork {coords} {edges} width={400} height={400} />
+          </div>
+        </div>
+        {:else if currentForm === 2}
+          <div class='step' class:active={currentStep === 1}>
+          <p><span class="small">Persistence</span>: Same ambiguity than in the pairwise world; are we talking about a group meeting face to face or some underlying group that meet to, say, carry on the paper.</p>
+        </div>
+        {:else}
+          <div class='step' class:active={currentStep === 2}>
+          <p><span class="small">Persistence</span>: It is hard to talk about interconnectedness without the underlying assumptions of group persistence.</p>
+          </div>
+        {/if}
+        <!-- 4. RepetitionNetwork -->
+        {#if currentForm === 1}
+            <div class='step' class:active={currentStep === 3}>
+            <p><span class="small">Repetition</span>: the number of times an interaction happened over a period of time. Covary with persistence. <em>Related formalism: repeated games, burstiness</em></p>          
+            </div>
+        {:else if currentForm === 2}
+            <div class='step' class:active={currentStep === 1}>
+            <p><span class="small">Repetition</span>: the number of times an interaction happened over a period of time. Covary with persistence. <em>Related formalism: repeated games, burstiness</em></p>          
+            </div>
+        {:else}
+            <div class='step' class:active={currentStep === 3}>
+            <p><span class="small">Repetition</span>: the number of times an interaction happened over a period of time. Covary with persistence. <em>Related formalism: repeated games, burstiness</em></p>          
+            </div>
+        {/if}
+        <!-- 5. FlickeringNetwork (Synchrony) -->
+        <div class='step' class:active={currentStep === 4}>
+          <p><span class="small">Synchrony</span>: How nodes fire together. <em>Related formalism: Kuramoto models</em></p>
+          {#if currentForm === 1}
+          <div class="margin-note ">
+            <FlickeringNetwork {coords} {edges} width={400} height={400} />
+          </div>
           {/if}
         </div>
-          <p><span class="small">Persistence</span>: the duration of your (face-to-face?) interactions.</p>
-        </div>
-        <div class='step' class:active={currentStep === 3}>
-        <p><span class="small">Repetition</span>: the number of times an interaction happened over a period of time. Covary with persistence. <em>Related formalism: repeated games, burstiness</em></p>          
-        </div>
-        <div class='step' class:active={currentStep === 4}>
-        <p><span class="small">Synchrony</span>: How nodes fire together.</p>
-        <div class="margin-note ">
-          <FlickeringNetwork {coords} {edges} width={400} height={400} />
-        </div>
-        </div>
+        <!-- DifferentiationNetwork -->
         <div class='step' class:active={currentStep === 5}>
-        <p><span class="small">Differentiation</span>: How components of the systems have different (functional) roles.</p>
+          <p><span class="small">Differentiation</span>: How components of the systems have different (functional) roles.</p>
+          {#if currentForm === 1}
+          {/if}
         </div>
+        <!-- Context-Depdendence -->
         <div class='step' class:active={currentStep === 6}>
-        <p><span class="small">Context-dependence</span>: Node- and edge-features depend on what is happening on the network.</p>
+          {#if currentForm === 1}
+            <p><span class="small">Context-dependence</span>: Node- and edge-features depend on what is happening on the network.
+          </p>
+          {:else if currentForm === 2}
+            <p><span class="small">Context-dependence</span>: Node- and edge-features depend on what is happening on the network.
+          </p>
+          {:else}
+            <p style="opacity:0.3;"><span class="small">Context-dependence</span>: Node- and edge-features depend on what is happening on the network.
+            </p>
+          {/if}
         </div>
+        <!-- BoundariesNetwork -->
         <div class='step' class:active={currentStep === 7}>
-        {#if isHONs}
+        {#if currentForm === 2}
+          <div class="margin-note ">
+              <div class="chart">
+                <ObservablePlot 
+                  options={{ axis: null, height, width, margin: 10,
+                    marks: [
+                        Plot.text(coords, {
+                            x: d=>xScale(d.x)+10, y: d=>yScale(-d.y)+13, label: "i", fontSize: 10  }),
+                        Plot.hull(coords_hons, {
+                            x: d=>xScale(d.x), y: d=>yScale(-d.y), fill: "group", fillOpacity: 0.2, strokeWidth: 2,
+                            }),
+                        Plot.dot(coords, {
+                            x: d=>xScale(d.x), y: d=>yScale(-d.y), r: 4, stroke: "black", symbol: "type", fill: "grey" })
+                    ]
+                }} />
+                </div>
+            </div>
         {:else}
+          <p><span class="small">Boundaries</span>: Porosity of what comes in and out of a group. <em>Related formalism: multilevel selection theory, </em></p>
           <div class="margin-note ">
             <BoundariesNetwork {coords} {edges} width={400} height={400} />
           </div>
-          <p><span class="small">Boundaries</span>: Porosity of what comes in and out of a group. <em>Related formalism: multilevel selection theory, </em></p>
         {/if}
         </div>
+        <!-- Composition -->
         <div class='step' class:active={currentStep === 8}>
-          {#if isHONs}
-        <div class="margin-note ">
-        <div class="chart">
-          <ObservablePlot 
-            options={{ axis: null, height, width, margin: 10,
-              marks: [
-                  Plot.text(coords, {
-                      x: d=>xScale(d.x)+10, y: d=>yScale(-d.y)+13, label: "i", fontSize: 10  }),
-                  Plot.hull(coords, {
-                      x: d=>xScale(d.x), y: d=>yScale(-d.y), fill: "group", fillOpacity: 0.2, strokeWidth: 2,
-                      }),
-                  Plot.dot(coords, {
-                      x: d=>xScale(d.x), y: d=>yScale(-d.y), r: 4, stroke: "black", symbol: "type", fill: "grey" })
-              ]
-          }} />
+          {#if currentForm === 2}
+            <p><span class="small">Composition</span>:.</p>
+          {:else}
+          <p><span class="small">Composition</span>: Individuals can be in different states, aka suceptible or infected.</p>
+          <div class="margin-note ">
+              <CompositionNetwork {coords} {edges} width={400} height={400} />
           </div>
-        </div>
-        <p><span class="small">Composition</span>:.</p>
-        {:else}
-        <div class="margin-note ">
-            <CompositionNetwork {coords} {edges} width={400} height={400} />
-        </div>
-        <p><span class="small">Composition</span>: 
-        </p>
         {/if}
         </div>
         <hr style="margin-bottom: 3vh">
@@ -199,21 +264,25 @@ We review how different field of studies have looked at social groups, looking t
           However, we won't give it all to philosophers. We are claiming that this intentionality is not that universal thing that exists beyond culture. Adopting a cultural evolutionist stance, we claim that intentionality as been enculturated, as the rest of our (human) biology (CITE Boyd & Richerson, Henrich, Laland, and the rest of the gang). As such, the hard problem is to provide a natural history of our intentionality, not that our <em>res cogitans</em> is somehow of a different kind than the rest of the natural world. See Tomesello (all of his works) for what I mean by a natural history of X.
           </details>
         </details>
+        <!-- InstitutionalStrength -->
         <div class='step' class:active={currentStep === 9}>
           <div class="margin-note ">
             <SimpleNetwork {coords} {edges} width={400} height={400} />
           </div>
           <p><span class="small">Institutional strength & formalism</span>: institutions are group-level behaviors or beliefs that shape individual lives. These are higher-order interactions in the sense that this is a dynamics that involve groups. A group that experience <em>institutionalization</em> is a group that exhibit stronger, more formal institutions. It lives in a 2D plane because I do not want to claim that informal norms are less "strong".</p>
         </div>
+        <!-- CollectiveIntentionality -->
         <div class='step' class:active={currentStep === 10}>
         <p><span class="small">Collective Intentionality</span>: Aboutness of groups, which might or might not be aligned with that of individuals.</p>        
         </div>
+        <!-- CognitiveDiversity -->
         <div class='step' class:active={currentStep === 11}>
         <div class="margin-note ">
           <SimpleNetwork {coords} {edges} width={400} height={400} />
         </div>
         <p><span class="small">Cognitive diversity</span>: Related to differentiation, but not reducible to it. We define cognitive diversity as sets of sociotechnical expertises and know-hows that interact in a way that is more than the sum of its part. This is the secret sauce of teams that are (actively?) driven by a shared goal.</p>
         </div>
+        <!-- Presence -->
         <div class='step' class:active={currentStep === 12}>
         <p><span class="small">Presence (experimental)</span>: Most of what I discussed about is derived from some literature. Here I am making this up to distinguish face-to-face from impersonal interactions. With impersonal interactions, I summon the idea of "presence in absence" (I think this is from Heidegger, but shhh). Some people (aka Searle) call that the "we-" attitude (that is in the mind of the beholder).</p>
         </div>
@@ -308,7 +377,7 @@ WIP
   .step.active {
       opacity: 1;
   }
-
+  
   section {
       position: relative;
   }
