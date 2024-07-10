@@ -34,13 +34,11 @@
 		<g class="nodes">
 			{#each coords as c, i}
 				<g>
-					<circle 
-						cx={xScale(c.x)} 
-						cy={yScale(c.y)} 
-						r="4" 
-						stroke="black" 
-						fill={c.group} 
-					/>
+					{#if c.type === "circle"}
+						<circle cx={xScale(c.x)} cy={yScale(c.y)} r="4" stroke="black" fill="grey"/>
+					{:else}
+						<rect x={xScale(c.x)} y={yScale(c.y)} width=8 height=8 stroke="black" fill="grey" transform="translate({-5}, {-5})"/>
+					{/if}
 					<text x={xScale(c.x) + 6} y={yScale(c.y) + 3} font-size="10" fill="black">{i}</text>
 				</g>
 			{/each}
