@@ -5,19 +5,16 @@
 	// Define the input data
 	export let circlesData = {
     Circle1: [
-      { cx: 130, cy: 150, r: 10, fill: "black" },
+      { cx: 130, cy: 150, r: 10, fill: "white" },
       { cx: 150, cy: 130, r: 10, fill: "white" }
     ],
     Circle2: [
-      { cx: 120, cy: 150, r: 10, fill: "black" },
-      { cx: 160, cy: 150, r: 10, fill: "black" },
-      { cx: 140, cy: 120, r: 10, fill: "white" }
+      { cx: 130, cy: 150, r: 10, fill: "black" },
+      { cx: 150, cy: 130, r: 10, fill: "white" }
     ],
     Circle3: [
-      { cx: 120, cy: 140, r: 10, fill: "black" },
-      { cx: 160, cy: 140, r: 10, fill: "black" },
-      { cx: 140, cy: 120, r: 10, fill: "black" },
-      { cx: 140, cy: 160, r: 10, fill: "white" }
+      { cx: 130, cy: 150, r: 10, fill: "black" },
+      { cx: 150, cy: 130, r: 10, fill: "black" }
     ]
   };
 

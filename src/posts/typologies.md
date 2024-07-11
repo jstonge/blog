@@ -1,19 +1,20 @@
 ---
-title: Group typologies (WIP)
+title: Group typologies as networks (WIP)
 description: Compile all the (social) groups
 date: '2024-07-08'
 categories:
   - lit review
+  - networks
+  - GMEs
 published: false
 pinned: false
 coverImage: ../thumbnails/stories/cgs-ver-abstract.webp
 ---
 <script>
   import { onMount } from 'svelte';
-  import Katex from '$lib/components/Katex.svelte';
-  import ObservablePlot from '$lib/components/ObsPlot.svelte';
-  import * as Plot from '@observablehq/plot';
+  
  	import { scaleLinear } from 'd3-scale';
+  import * as Plot from '@observablehq/plot';
   
   import FlickeringNetwork from '$lib/components/networks/FlickeringNetwork.svelte';
   import SimpleGME from '$lib/components/networks/SimpleGME.svelte';
@@ -24,6 +25,7 @@ coverImage: ../thumbnails/stories/cgs-ver-abstract.webp
   import CompositionNetwork from '$lib/components/networks/CompositionNetwork.svelte';
   import SimpleNetwork from '$lib/components/networks/SimpleNetwork.svelte';
   
+  import ObservablePlot from '$lib/components/ObsPlot.svelte';
   import Scrolly from "$lib/components/helpers/Scrolly.svelte"
   
   // import { Cite } from '@citation-js/core';
@@ -34,10 +36,8 @@ coverImage: ../thumbnails/stories/cgs-ver-abstract.webp
   // let ThomassonOnto2016 = new Cite("10.1007/s11229-016-1185-y").format('citation', {format: 'html'})
   // let Battiston2020 = new Cite("10.1016/j.physrep.2020.05.004").format('citation', {format: 'html'})
   
-  
   let currentStep = 0;
   let currentForm = 3;
-  let isHONs = false;
 
   function handleClick() {
     currentForm = (currentForm + 1) % 4;
@@ -53,7 +53,7 @@ coverImage: ../thumbnails/stories/cgs-ver-abstract.webp
     { x: 87,  y: -27, r:10, i:2, group: "green", type: "square" }
 	];
 	
-  // colors=hyperedges; duplicated nodes. Hull don't draw pairwise edges...
+  // We use colors for hyperedges, which mean we duplicate nodes. Also hulls are not allowed for pairwise edges...
   const coords_hons = [
 		{ x: 0,   y: 134, r:10, i:0, group: "red",   type: "circle" },
 		{ x: 43,  y: -33, r:10, i:1, group: "yellow", type: "square"},
@@ -99,7 +99,10 @@ coverImage: ../thumbnails/stories/cgs-ver-abstract.webp
 
 There are as many ways to describe social groups that there are field of studies out there. This diversity has led some people to say that building a parsimonious group typlogy is <a href="https://www.researchgate.net/publication/315973440_What_are_social_groups_Their_metaphysics_and_how_to_classify_them">hopeless</a>. That, grouping of humans are made up  anyway, and as such the exercice of grouping people is in itself a political act (Boyer p.56). Alternatively, we can follow <a href="https://doi.org/10.1007%2Fs11229-016-1185-y">Thomasson (2016)</a> and assume that, yes, groups exist. We go to clubs and union meetings. They seem pretty real. But instead we ask: what if social groups concepts (themselves) serve a purpose in giving a normative structure to our collective lives. 
 
-We review how different field of studies have looked at social groups, looking through the lens of network science. Because networks are just low quality representations of our phenomenological lives, I point out where they fail at capturing what social scientists like to talk about. 
+We review how different human sciences are focusing on varying aspects of our normative lives at differents points in time and space and organizational scale. We cut through the diversity of viewpoint through the lens of network science; how all of this mumbo-jumbo can be expressed as different types of human interactions. But because networks are just low quality representations of our phenomenological lives, I try to point out where they fail at capturing what social scientists like to talk about. 
+
+
+## Flatland
 
 <div class="margin-note" style="display: flex; justify-content: center; align-items: center; margin-top: 6vh;">
   {#if currentForm === 0} 
@@ -113,18 +116,23 @@ We review how different field of studies have looked at social groups, looking t
   {/if}
 </div>
 
-## Flatland
-
+<div class="caution">
+We use opacity to indicate when particular properties are relevant to different network representations. This is work in progress. 
+</div>
 <section>
 	<div class="steps">
 		<Scrolly bind:value={currentStep}>
-        <!-- 1. SCATTERPLOT-->
+        <!-- 
+              ##################
+              # 1. SCATTERPLOT #
+              ##################
+        -->
         <div class='step' class:active={currentStep === 0}>
           {#if currentForm === 0}
             <div class="margin-note ">
               <ScatterPlot {coords} {width} {height} />
             </div>
-            <p><span class="small">Group size</span>: Without a network, people are particles floating around. They can still do stuff, perhaps based on some average of the systems (mean-field). But right now, they are not even differentiated. They are no even jiggling around, which would be a sign of energy.</p>
+            <p><span class="small">Group size</span>: Without a network, people are just particles floating around. They can still do stuff, perhaps based on some average of the systems (mean-field). But right now, they are not even differentiated. They are no even jiggling around, which would be a sign of energy.</p>
           {:else if currentForm == 1}
            <p><span class="small">Group size</span>: How many people are in the system? What happens when you grow that number? With simple game-theoretic models of cooperation, more people playing the games means reciprocity get diluted. As a result, it becomes harder to kick start altruistic behaviors. <em>Related formalism: n-player games, ...</em></p>
           {:else if currentForm == 2}
@@ -133,7 +141,11 @@ We review how different field of studies have looked at social groups, looking t
             <p><span class="small">Group size</span>: How many people you can you reach in your social network? How many people would you be willing to ask to come help on moving's day, aka your Dunbar's number? <em>Related formalism: n-player games, ...</em></p>
           {/if}
         </div>
-        <!-- 2. INTERCONNECTEDNESS -->
+        <!-- 
+              #########################
+              # 2. INTERCONNECTEDNESS #
+              #########################
+        -->
         <div class='step' class:active={currentStep === 1}>
         {#if currentForm === 0}
           <p style={currentStep === 1 ? "opacity:0.3;" : "opacity:1;"}><span class="small">Interconnectedness</span>: Fancy word to talk about the structure of interactions, which in network science we refer as local and global network properties.</p>
@@ -166,7 +178,7 @@ We review how different field of studies have looked at social groups, looking t
             <div class="margin-note">
               <ScatterGME height={150}/>
             </div>
-            <p><span class="small">Interconnectedness</span>: Using group-based master equations (GMEs), we track the probability distribution of groups with any possible configuration of individual states. To help wrap your mind around the idea, assume there are 10 groups (cliques really, which are maximally connected hyperedges) in our system. Each group contains 2 individuals, who can be in one of two states. When we say we track probability distribution, what is the probability to find a group in state (1,0), (1,1), or (0,0). </p>
+            <p><span class="small">Interconnectedness</span>: Using GMEs, we now track the probability distribution of groups to be in any possible configuration of individual states. What does that mean? Say that we have ten groups (cliques really, which are maximally connected hyperedges) in our system. Each group contains two individuals, who can be in one of two states. Instead of counting hyperedges, we now ask about the probability of finding each group in particular state, namely (0,0), (1,0), (1,1). Here the probabilities are 30%, 50%, 20%. </p>
           </div>
         {/if}
         </div>
@@ -188,7 +200,7 @@ We review how different field of studies have looked at social groups, looking t
         </div>
         {:else if currentForm === 3}
           <div class='step' class:active={currentStep === 1}>
-          <p><span class="small">Persistence</span>: Groups in GMEs are assumed to be maximally connected hyperedges, or cliques. For instance, household or workplace. This representation is group-based in that we start from the assumption that individuals are part of relevant units. As such, they must persist in time. Doing so allow us to ask equation about group-based interactions; similar to what we are doing with normal networks. Households interact with one another, while being in a particular state.</p>
+            <p><span class="small">Persistence</span>: Groups in GMEs are assumed to be maximally connected hyperedges, or cliques. For instance, household or workplace. This representation is group-based in that we start from the assumption that individuals are part of relevant units. As such, they must persist in time. Doing so allow us to ask equation about group-based interactions; similar to what we are doing with normal networks. Households interact with one another, while being in a particular state.</p>
         </div>
         {/if}
         <!-- 4. RepetitionNetwork -->
@@ -209,7 +221,11 @@ We review how different field of studies have looked at social groups, looking t
               <p><span class="small">Repetition</span>: In principle, we could talk the number of times group interact over a period of time. But as with many simpler models, we assume a mean-field theory across group interactions to simplify the maths.</p>          
             </div>
         {/if}
-        <!-- 5. FlickeringNetwork (Synchrony) -->
+        <!-- 
+              ####################################
+              # 5. FlickeringNetwork (Synchrony) #
+              ####################################
+        -->
         <div class='step' class:active={currentStep === 4}>
           {#if currentForm === 0}
             <p style={currentStep === 4 ? "opacity:0.3;" : "opacity:1;"}><span class="small">Synchrony</span>: How nodes fire together. <em>Related formalism: Kuramoto models</em></p>
@@ -219,9 +235,9 @@ We review how different field of studies have looked at social groups, looking t
             </div>
             <p><span class="small">Synchrony</span>: How nodes fire together. <em>Related formalism: Kuramoto models</em></p>
           {:else if currentForm === 2}
-            <p><span class="small">Synchrony</span>: How nodes fire together. <em>Related formalism: Kuramoto models</em></p>
+            <p><span class="small">Synchrony</span>: How does synchrony of, say, three-body interactions (3-node hyperedges) differs from that of pairwise networks. Do they synchronize more easily or is it harder to fire together. Are there more ways to get multistable states on the long run? What about motifs with more than 3-node hyperedges? <em>Related formalism: Higher-order Kuramoto models</em></p>
           {:else if currentForm === 3}
-            <p><span class="small">Synchrony</span>: How nodes fire together. <em>Related formalism: Kuramoto models</em></p>
+            <p><span class="small">Synchrony</span>:</p>
           {/if}
         </div>
         <!-- 
@@ -234,23 +250,25 @@ We review how different field of studies have looked at social groups, looking t
         </div>
         <!-- 
               ##########################
-              # 7. Context-Depdendence #
+              #    7.Composition       #
               ##########################
         -->
         <div class='step' class:active={currentStep === 6}>
           {#if currentForm === 0}
-            <p style={currentStep === 6 ? "opacity:0.3;" : "opacity:1;"}><span class="small">Context-dependence</span>: Node- and edge-features depend on what is happening on the network.
-            </p>
+          <p><span class="small">Composition</span>:.</p>
           {:else if currentForm === 1}
-            <p><span class="small">Context-dependence</span>: Node- and edge-features depend on what is happening on the network.</p>
+          <p><span class="small">Composition</span>:.</p>
           {:else if currentForm === 2}
-            <p><span class="small">Context-dependence</span>: Node- and edge-features depend on what is happening on the network.</p>
+          <p><span class="small">Composition</span>: Individuals can be in different states, aka suceptible or infected.</p>
+          <div class="margin-note ">
+              <CompositionNetwork {coords} {edges} width={400} height={400} />
+          </div>
           {:else if currentForm === 3}
-            <p><span class="small">Context-dependence</span>: Node- and edge-features depend on what is happening on the network.</p>
             <div class="margin-note">
               <SimpleGME height={1200}/>
             </div>
-          {/if}
+          <p><span class="small">Composition</span>: Groups changing states can be represented as probability flow. As you might have realized, GMEs assume the presence of group-structure population, which influence (dare I say, cause) individuals to be in a particular state. In doing so, we can model how group behaviors coevolve with individual behaviors. For instance, household behaviors impact the likelihood, often in a nonlinear manner, of individuals getting infected.</p>
+        {/if}
         </div>
         <!--   
                 ########################
@@ -287,21 +305,28 @@ We review how different field of studies have looked at social groups, looking t
           <p><span class="small">Boundaries</span>: Porosity of what comes in and out of a group. <em>Related formalism: multilevel selection theory, </em></p>
         {/if}
         </div>
-        <!-- Composition -->
+        <!-- 
+              ##########################
+              # 9. Context-Depdendence #
+              ##########################
+        -->
         <div class='step' class:active={currentStep === 8}>
-          {#if currentForm === 0}
-          <p><span class="small">Composition</span>:.</p>
+        {#if currentForm === 0}
+            <p style={currentStep === 6 ? "opacity:0.3;" : "opacity:1;"}><span class="small">Context-dependence</span>: Node- and edge-features depend on what is happening on the network.
+            </p>
           {:else if currentForm === 1}
-          <p><span class="small">Composition</span>:.</p>
+            <p><span class="small">Context-dependence</span>: Node- and edge-features depend on what is happening on the network.</p>
           {:else if currentForm === 2}
-          <p><span class="small">Composition</span>: Individuals can be in different states, aka suceptible or infected.</p>
-          <div class="margin-note ">
-              <CompositionNetwork {coords} {edges} width={400} height={400} />
-          </div>
+            <p><span class="small">Context-dependence</span>: Node- and edge-features depend on what is happening on the network.</p>
           {:else if currentForm === 3}
-          <p><span class="small">Composition</span>: Individuals can be in different states, aka suceptible or infected.</p>
-        {/if}
+            <p><span class="small">Context-dependence</span>: Depending on how the group is doing, people can choose to rewire to some other groups with some probability. This ought to resonate with WEIRD, characterize by their mobility, compared to less WEIRD population. </p>
+          {/if}
         </div>
+        <!-- 
+              #############
+              # INTERLUDE #
+              #############
+        -->
         <hr style="margin-bottom: 3vh">
         <details class="rabbit-hole">
         <summary>+ <span class="small">cultural intentionality layer</span></summary>
@@ -316,12 +341,24 @@ We review how different field of studies have looked at social groups, looking t
           However, we won't give it all to philosophers. We are claiming that this intentionality is not that universal thing that exists beyond culture. Adopting a cultural evolutionist stance, we claim that intentionality as been enculturated, as the rest of our (human) biology (CITE Boyd & Richerson, Henrich, Laland, and the rest of the gang). As such, the hard problem is to provide a natural history of our intentionality, not that our <em>res cogitans</em> is somehow of a different kind than the rest of the natural world. See Tomesello (all of his works) for what I mean by a natural history of X.
           </details>
         </details>
-        <!-- InstitutionalStrength -->
+        <!--   
+                ###########################
+                # 9. Institutionalization #
+                ###########################
+        -->
         <div class='step' class:active={currentStep === 9}>
+          {#if currentForm === 0}
+          <p><span class="small">Institutional strength & formalism</span></p>
+          {:else if currentForm === 1}
           <div class="margin-note ">
             <SimpleNetwork {coords} {edges} width={400} height={400} />
           </div>
+          <p><span class="small">Institutional strength & formalism</span></p>
+          {:else if currentForm === 2}
           <p><span class="small">Institutional strength & formalism</span>: institutions are group-level behaviors or beliefs that shape individual lives. These are higher-order interactions in the sense that this is a dynamics that involve groups. A group that experience <em>institutionalization</em> is a group that exhibit stronger, more formal institutions. It lives in a 2D plane because I do not want to claim that informal norms are less "strong".</p>
+          {:else if currentForm === 3}
+          <p><span class="small">Institutional strength & formalism</span>: Adopting a group-level perspective makes it easier to model institutionalization process. Now groups, not individuals, decide to scale up the level of policies that can change individual behaviors, in turn influencing composition.</p>
+          {/if}
         </div>
         <!-- CollectiveIntentionality -->
         <div class='step' class:active={currentStep === 10}>
@@ -366,10 +403,10 @@ You can think of this case study as baseline for social groups that are reducibl
 ### Anthropology
 
 <div class="tags">
-		{#each ['kinship groups'] as category}
+		{#each ['kinship groups', 'ethnolinguistic groups', 'sex and age grouping'] as category}
 			<span class="surface-4">&num;{category}</span>
 		{/each}
-	</div>
+</div>
 
 Anthropologists are interested in the structure and dynamics of kinship groups. Kinships are social groups that comprise sets of related individuals and exhibit a number of kin-based institutions, or social norms. Those institutions cut across all aspects of human lives---regulating marriages, descent, post-marital residence, family organizations and governance---making humans a deeply cultural species.
 
@@ -383,7 +420,13 @@ Although it is depend on the time and place, it is not rare than tribes are at w
 
 ### Sociology
 
-Sociologists are generally interested in the ways in which individuals are shaped by modern institutions, leading to all sorts of WEIRD behaviors such as suicidal epidemics and work ethics. They are interested in what happens to individuals in larger groups, that include more <span class="small">formal</span> institutions such as Western schooling systems and big religion. 
+<div class="tags">
+		{#each ['voluntary organizations', 'society'] as category}
+			<span class="surface-4">&num;{category}</span>
+		{/each}
+</div>
+
+Sociologists are generally interested in the ways in which individuals are shaped by modern institutions, leading to all sorts of WEIRD behaviors such as suicide epidemics (Durkheim), gift economics (Mauss) and work ethics (Weber). They are interested in what happens to individuals in larger groups, that include more <span class="small">formal</span> institutions such as Western schooling systems and big religion. 
 
 Like anthropology, sociologists have turned their gaze back on our scientific institutions. They are interested in the scientific enterprise as a WEIRD voluntary organization that has specific patterns in interconnectedness that ought to be based on shared scientific interests over kinships. They discs the emergence of formal and informal norms such as peer review, respecting big man with many citations, traveling for conferences, diminishing the values of paid works over passions, and so on.
 
