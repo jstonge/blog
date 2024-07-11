@@ -10,12 +10,14 @@ coverImage: ../thumbnails/stories/cgs-ver-abstract.webp
 ---
 <script>
   import { onMount } from 'svelte';
-  
+  import Katex from '$lib/components/Katex.svelte';
   import ObservablePlot from '$lib/components/ObsPlot.svelte';
   import * as Plot from '@observablehq/plot';
  	import { scaleLinear } from 'd3-scale';
   
   import FlickeringNetwork from '$lib/components/networks/FlickeringNetwork.svelte';
+  import SimpleGME from '$lib/components/networks/SimpleGME.svelte';
+  import ScatterGME from '$lib/components/networks/ScatterGME.svelte';
   import PersistenceNetwork from '$lib/components/networks/PersistenceNetwork.svelte';
   import ScatterPlot from '$lib/components/networks/ScatterPlot.svelte';
   import BoundariesNetwork from '$lib/components/networks/BoundariesNetwork.svelte';
@@ -24,22 +26,21 @@ coverImage: ../thumbnails/stories/cgs-ver-abstract.webp
   
   import Scrolly from "$lib/components/helpers/Scrolly.svelte"
   
-  import { Cite } from '@citation-js/core';
-  import '@citation-js/plugin-doi';
-  import '@citation-js/plugin-csl';
+  // import { Cite } from '@citation-js/core';
+  // import '@citation-js/plugin-doi';
+  // import '@citation-js/plugin-csl';
   
-
-  let Bahrami2022Z = new Cite("10.2139/ssrn.4200629").format('citation', {format: 'html'})
-  let ThomassonOnto2016 = new Cite("10.1007/s11229-016-1185-y").format('citation', {format: 'html'})
-  let Battiston2020 = new Cite("10.1016/j.physrep.2020.05.004").format('citation', {format: 'html'})
+  // let Bahrami2022Z = new Cite("10.2139/ssrn.4200629").format('citation', {format: 'html'})
+  // let ThomassonOnto2016 = new Cite("10.1007/s11229-016-1185-y").format('citation', {format: 'html'})
+  // let Battiston2020 = new Cite("10.1016/j.physrep.2020.05.004").format('citation', {format: 'html'})
   
   
   let currentStep = 0;
-  let currentForm = 1;
+  let currentForm = 3;
   let isHONs = false;
 
   function handleClick() {
-    currentForm = (currentForm + 1) % 3;
+    currentForm = (currentForm + 1) % 4;
   } 
 
 	const coords = [
@@ -95,16 +96,19 @@ coverImage: ../thumbnails/stories/cgs-ver-abstract.webp
   $: console.log(currentForm)
 </script>
 
-There are as many ways to describe social groups that there are field of studies out there. This diversity has led some people to say that building a parsimonious group typlogy is <a href="https://www.researchgate.net/publication/315973440_What_are_social_groups_Their_metaphysics_and_how_to_classify_them">hopeless</a>. That, grouping of humans are made up  anyway, and as such the exercice of grouping people is in itself a political act (Boyer p.56). Alternatively, we can follow <a href="https://doi.org/10.1007%2Fs11229-016-1185-y">{ThomassonOnto2016}</a> and assume that, yes, groups exist. We go to clubs and union meetings. They seem pretty real. But instead we ask: what if social groups concepts (themselves) serve a purpose in giving a normative structure to our collective lives. 
+
+There are as many ways to describe social groups that there are field of studies out there. This diversity has led some people to say that building a parsimonious group typlogy is <a href="https://www.researchgate.net/publication/315973440_What_are_social_groups_Their_metaphysics_and_how_to_classify_them">hopeless</a>. That, grouping of humans are made up  anyway, and as such the exercice of grouping people is in itself a political act (Boyer p.56). Alternatively, we can follow <a href="https://doi.org/10.1007%2Fs11229-016-1185-y">Thomasson (2016)</a> and assume that, yes, groups exist. We go to clubs and union meetings. They seem pretty real. But instead we ask: what if social groups concepts (themselves) serve a purpose in giving a normative structure to our collective lives. 
 
 We review how different field of studies have looked at social groups, looking through the lens of network science. Because networks are just low quality representations of our phenomenological lives, I point out where they fail at capturing what social scientists like to talk about. 
 
-<div class="margin-note" style="display: flex; justify-content: center; align-items: center;">
+<div class="margin-note" style="display: flex; justify-content: center; align-items: center; margin-top: 6vh;">
   {#if currentForm === 0} 
   <button on:click={() => handleClick()}>Make it a network </button>
   {:else if currentForm === 1}
   <button on:click={() => handleClick()}>Make it higher-order </button>
-  {:else if currentForm == 2}
+  {:else if currentForm === 2}
+  <button on:click={() => handleClick()}>Make it a master equation </button>
+  {:else if currentForm == 3}
   <button on:click={() => handleClick()}>Make it simpler</button>
   {/if}
 </div>
@@ -117,45 +121,61 @@ We review how different field of studies have looked at social groups, looking t
         <!-- 1. SCATTERPLOT-->
         <div class='step' class:active={currentStep === 0}>
           {#if currentForm === 0}
-          <div class="margin-note ">
-            <ScatterPlot {coords} {width} {height} />
-          </div>
+            <div class="margin-note ">
+              <ScatterPlot {coords} {width} {height} />
+            </div>
+            <p><span class="small">Group size</span>: Without a network, people are particles floating around. They can still do stuff, perhaps based on some average of the systems (mean-field). But right now, they are not even differentiated. They are no even jiggling around, which would be a sign of energy.</p>
+          {:else if currentForm == 1}
+           <p><span class="small">Group size</span>: How many people are in the system? What happens when you grow that number? With simple game-theoretic models of cooperation, more people playing the games means reciprocity get diluted. As a result, it becomes harder to kick start altruistic behaviors. <em>Related formalism: n-player games, ...</em></p>
+          {:else if currentForm == 2}
+            <p><span class="small">Group size</span>: How many people you can you reach in your social network? How many people would you be willing to ask to come help on moving's day, aka your Dunbar's number? <em>Related formalism: n-player games, ...</em></p>
+          {:else if currentForm == 3}
+            <p><span class="small">Group size</span>: How many people you can you reach in your social network? How many people would you be willing to ask to come help on moving's day, aka your Dunbar's number? <em>Related formalism: n-player games, ...</em></p>
           {/if}
-          <p><span class="small">Group size</span>: How many people you can you reach in your social network? How many people would you be willing to ask to come help on moving's day, aka your Dunbar's number? <em>Related formalism: n-player games, ...</em></p>
         </div>
         <!-- 2. INTERCONNECTEDNESS -->
         <div class='step' class:active={currentStep === 1}>
-        {#if currentForm === 2}
+        {#if currentForm === 0}
+          <p style={currentStep === 1 ? "opacity:0.3;" : "opacity:1;"}><span class="small">Interconnectedness</span>: Fancy word to talk about the structure of interactions, which in network science we refer as local and global network properties.</p>
+        {:else if currentForm === 1}
+          <div class="margin-note ">
+            <SimpleNetwork {coords} {edges} {width} {height} />
+          </div>
+          <p><span class="small">Interconnectedness</span>: With social networks, the world opens up. You can calculate local- and global-properties of the network. Social (simple) networks are characterized by particular metrics, such as average degree distribution, density, etc. 
+          </p>
+        {:else if currentForm === 2}
           <div class="margin-note ">
             <div class="chart">
               <ObservablePlot 
               options={{ axis: null, height, width, margin: 10,
                 marks: [
                     Plot.text(coords, {
-                        x: d=>xScale(d.x)+10, y: d=>yScale(-d.y)+13, label: "i", fontSize: 10  }),
+                        x: d => xScale(d.x)+10, y: d => yScale(-d.y)+13, label: "i", fontSize: 10  }),
                     Plot.hull(coords_hons, {
-                        x: d=>xScale(d.x), y: d=>yScale(-d.y), fill: "group", fillOpacity: 0.2, strokeWidth: 2,
+                        x: d => xScale(d.x), y: d => yScale(-d.y), fill: "group", fillOpacity: 0.2, strokeWidth: 2,
                         }),
                     Plot.dot(coords, {
-                        x: d=>xScale(d.x), y: d=>yScale(-d.y), r: 4, stroke: "black", fill: "grey" })
+                        x: d => xScale(d.x), y: d => yScale(-d.y), r: 4, stroke: "black", fill: "grey" })
                 ]
             }} />
             </div>
           </div>
-          <p><span class="small">Interconnectedness</span>: Metrics on higher-order networks are slightly different. In this case, we now have three hyperedges; each interaction involved more than two people at once. This is the key idea of higher-order representation, we are assuming that the interaction is a group effort that is non-reducible to the set of pairwise interactions.</p>
-        {:else if currentForm === 1}
-          <div class="margin-note ">
-            <SimpleNetwork {coords} {edges} {width} {height} />
+          <p><span class="small">Interconnectedness</span>: Same people, but we assume three hyperedges. By adopting this network representation, we assume that interactions are group-based; two groups of two and one involving four people. Consider the case of coauthors on paper; by assuming group interactions, we say the group effort is different than the set of pairwise interactions that could produce the hyperedges. How exactly is an open question.</p>
+        {:else if currentForm === 3}
+          <div class='step' class:active={currentStep === 1}>
+            <div class="margin-note">
+              <ScatterGME height={150}/>
+            </div>
+            <p><span class="small">Interconnectedness</span>: Using group-based master equations (GMEs), we track the probability distribution of groups with any possible configuration of individual states. To help wrap your mind around the idea, assume there are 10 groups (cliques really, which are maximally connected hyperedges) in our system. Each group contains 2 individuals, who can be in one of two states. When we say we track probability distribution, what is the probability to find a group in state (1,0), (1,1), or (0,0). </p>
           </div>
-          <p><span class="small">Interconnectedness</span>: Fancy word to talk about the structure of interactions, which in network science we refer as local and global network properties.
-          </p>
-        {:else}
-          <p style="opacity:0.3;"><span class="small">Interconnectedness</span>: Fancy word to talk about the structure of interactions, which in network science we refer as local and global network properties.
-          </p>
         {/if}
         </div>
         <!-- 3. PersistenceNetwork -->
-        {#if currentForm === 1}
+        {#if currentForm == 0}
+          <div class='step' class:active={currentStep === 2}>
+          <p style={currentStep === 2 ? "opacity:0.3;" : "opacity:1;"}><span class="small">Persistence</span>: It is hard to talk about interconnectedness without the underlying assumptions of group persistence.</p>
+          </div>
+        {:else if currentForm === 1}
           <div class='step' class:active={currentStep === 2}>
           <p><span class="small">Persistence</span>: the duration of your interactions. But what do we mean. Does the interaction represents the duration of the face-to-face interactions, or long-lasting relationships (in the aggregate). It depends on the network interpretation.</p>
           <div class="margin-note ">
@@ -166,56 +186,87 @@ We review how different field of studies have looked at social groups, looking t
           <div class='step' class:active={currentStep === 1}>
           <p><span class="small">Persistence</span>: Same ambiguity than in the pairwise world; are we talking about a group meeting face to face or some underlying group that meet to, say, carry on the paper.</p>
         </div>
-        {:else}
-          <div class='step' class:active={currentStep === 2}>
-          <p><span class="small">Persistence</span>: It is hard to talk about interconnectedness without the underlying assumptions of group persistence.</p>
-          </div>
+        {:else if currentForm === 3}
+          <div class='step' class:active={currentStep === 1}>
+          <p><span class="small">Persistence</span>: Groups in GMEs are assumed to be maximally connected hyperedges, or cliques. For instance, household or workplace. This representation is group-based in that we start from the assumption that individuals are part of relevant units. As such, they must persist in time. Doing so allow us to ask equation about group-based interactions; similar to what we are doing with normal networks. Households interact with one another, while being in a particular state.</p>
+        </div>
         {/if}
         <!-- 4. RepetitionNetwork -->
-        {#if currentForm === 1}
+        {#if currentForm === 0}
+          <div class='step' class:active={currentStep === 3}>
+            <p style={currentStep === 3 ? "opacity:0.3;" : "opacity:1;"}><span class="small">Repetition</span>: the number of times an interaction happened over a period of time. Related to persistence in that many short-lasting interactions is very different than a few, long-lasting interactions (Tinder vs. Monogamy). <em>Related formalism: repeated games, burstiness</em></p>          
+          </div>
+        {:else if currentForm === 1}
             <div class='step' class:active={currentStep === 3}>
-            <p><span class="small">Repetition</span>: the number of times an interaction happened over a period of time. Covary with persistence. <em>Related formalism: repeated games, burstiness</em></p>          
+              <p><span class="small">Repetition</span>: the number of times an interaction happened over a period of time. Related with persistence. <em>Related formalism: repeated games, burstiness</em></p>          
             </div>
         {:else if currentForm === 2}
             <div class='step' class:active={currentStep === 1}>
-            <p><span class="small">Repetition</span>: the number of times an interaction happened over a period of time. Covary with persistence. <em>Related formalism: repeated games, burstiness</em></p>          
+              <p><span class="small">Repetition</span>: the number of times an interaction happened over a period of time. Related with persistence. <em>Related formalism: repeated games, burstiness</em></p>          
             </div>
-        {:else}
-            <div class='step' class:active={currentStep === 3}>
-            <p><span class="small">Repetition</span>: the number of times an interaction happened over a period of time. Covary with persistence. <em>Related formalism: repeated games, burstiness</em></p>          
+        {:else if currentForm === 3}
+            <div class='step' class:active={currentStep === 1}>
+              <p><span class="small">Repetition</span>: In principle, we could talk the number of times group interact over a period of time. But as with many simpler models, we assume a mean-field theory across group interactions to simplify the maths.</p>          
             </div>
         {/if}
         <!-- 5. FlickeringNetwork (Synchrony) -->
         <div class='step' class:active={currentStep === 4}>
-          <p><span class="small">Synchrony</span>: How nodes fire together. <em>Related formalism: Kuramoto models</em></p>
-          {#if currentForm === 1}
-          <div class="margin-note ">
-            <FlickeringNetwork {coords} {edges} width={400} height={400} />
-          </div>
+          {#if currentForm === 0}
+            <p style={currentStep === 4 ? "opacity:0.3;" : "opacity:1;"}><span class="small">Synchrony</span>: How nodes fire together. <em>Related formalism: Kuramoto models</em></p>
+          {:else if currentForm === 1}
+            <div class="margin-note ">
+              <FlickeringNetwork {coords} {edges} width={400} height={400} />
+            </div>
+            <p><span class="small">Synchrony</span>: How nodes fire together. <em>Related formalism: Kuramoto models</em></p>
+          {:else if currentForm === 2}
+            <p><span class="small">Synchrony</span>: How nodes fire together. <em>Related formalism: Kuramoto models</em></p>
+          {:else if currentForm === 3}
+            <p><span class="small">Synchrony</span>: How nodes fire together. <em>Related formalism: Kuramoto models</em></p>
           {/if}
         </div>
-        <!-- DifferentiationNetwork -->
+        <!-- 
+              ###########################
+              # 6. DifferentiationNetwork 
+              ###########################
+        -->
         <div class='step' class:active={currentStep === 5}>
           <p><span class="small">Differentiation</span>: How components of the systems have different (functional) roles.</p>
-          {#if currentForm === 1}
-          {/if}
         </div>
-        <!-- Context-Depdendence -->
+        <!-- 
+              ##########################
+              # 7. Context-Depdendence #
+              ##########################
+        -->
         <div class='step' class:active={currentStep === 6}>
-          {#if currentForm === 1}
-            <p><span class="small">Context-dependence</span>: Node- and edge-features depend on what is happening on the network.
-          </p>
-          {:else if currentForm === 2}
-            <p><span class="small">Context-dependence</span>: Node- and edge-features depend on what is happening on the network.
-          </p>
-          {:else}
-            <p style="opacity:0.3;"><span class="small">Context-dependence</span>: Node- and edge-features depend on what is happening on the network.
+          {#if currentForm === 0}
+            <p style={currentStep === 6 ? "opacity:0.3;" : "opacity:1;"}><span class="small">Context-dependence</span>: Node- and edge-features depend on what is happening on the network.
             </p>
+          {:else if currentForm === 1}
+            <p><span class="small">Context-dependence</span>: Node- and edge-features depend on what is happening on the network.</p>
+          {:else if currentForm === 2}
+            <p><span class="small">Context-dependence</span>: Node- and edge-features depend on what is happening on the network.</p>
+          {:else if currentForm === 3}
+            <p><span class="small">Context-dependence</span>: Node- and edge-features depend on what is happening on the network.</p>
+            <div class="margin-note">
+              <SimpleGME height={1200}/>
+            </div>
           {/if}
         </div>
-        <!-- BoundariesNetwork -->
+        <!--   
+                ########################
+                # 8. BoundariesNetwork #
+                ########################
+        -->
         <div class='step' class:active={currentStep === 7}>
-        {#if currentForm === 2}
+        {#if currentForm == 0}
+          <p style={currentStep === 7 ? "opacity:0.3;" : "opacity:1;"}><span class="small">Boundaries</span>: Porosity of what comes in and out of a group. <em>Related formalism: multilevel selection theory, </em></p>
+        {:else if currentForm == 1}
+          <p><span class="small">Boundaries</span>: Porosity of what comes in and out of a group. <em>Related formalism: multilevel selection theory, </em></p>
+          <div class="margin-note ">
+            <BoundariesNetwork {coords} {edges} width={400} height={400} />
+          </div>
+        {:else if currentForm === 2}
+          <p><span class="small">Boundaries</span>: Porosity of what comes in and out of a group. <em>Related formalism: multilevel selection theory, </em></p>
           <div class="margin-note ">
               <div class="chart">
                 <ObservablePlot 
@@ -232,22 +283,23 @@ We review how different field of studies have looked at social groups, looking t
                 }} />
                 </div>
             </div>
-        {:else}
+        {:else if currentForm === 3}
           <p><span class="small">Boundaries</span>: Porosity of what comes in and out of a group. <em>Related formalism: multilevel selection theory, </em></p>
-          <div class="margin-note ">
-            <BoundariesNetwork {coords} {edges} width={400} height={400} />
-          </div>
         {/if}
         </div>
         <!-- Composition -->
         <div class='step' class:active={currentStep === 8}>
-          {#if currentForm === 2}
-            <p><span class="small">Composition</span>:.</p>
-          {:else}
+          {#if currentForm === 0}
+          <p><span class="small">Composition</span>:.</p>
+          {:else if currentForm === 1}
+          <p><span class="small">Composition</span>:.</p>
+          {:else if currentForm === 2}
           <p><span class="small">Composition</span>: Individuals can be in different states, aka suceptible or infected.</p>
           <div class="margin-note ">
               <CompositionNetwork {coords} {edges} width={400} height={400} />
           </div>
+          {:else if currentForm === 3}
+          <p><span class="small">Composition</span>: Individuals can be in different states, aka suceptible or infected.</p>
         {/if}
         </div>
         <hr style="margin-bottom: 3vh">
@@ -292,7 +344,32 @@ We review how different field of studies have looked at social groups, looking t
 
 ## Embracing diversity
 
+Now we are leaving flatland and entering the messy world of reality, from the lens of different field of study. We seek to map field of study onto related social groups, expressed as network types. 
+
+<details style="margin-top: 2vh;">
+<summary>Case study: Chimps, interconnectivity, and cumulative culture</summary>
+<a href="https://www.biorxiv.org/content/biorxiv/early/2023/08/28/2023.08.14.553272.full.pdf">Gunasekaram et al. (2023)</a> provide a cool study of the relationship between interconnectedness of chimps communities and the cumulative cultural learning. Cumulative culture is defined as behaviors that are complex enough they can no longer be reinvented from scratch. Culture is defined as a set of behavioral traditions transmistted via social learning (as opposed to trials and errors). The gist is that if chimps are really good social learners (they can imitate), and that they are surrounded by a pool of (cultural) behaviors, this might drive incremental changes in complex behaviors. 
+
+What is the network? The nodes are communities, but with behavioral traditions being overlayed with different shapes; and colors indicate nodes attributes. There are two kinds of interactions; (i) migration being traced with genetic flow and (i) shared behaviors. Interactions are pairwise, but they show subspecies as hyperedges (for illustration purposes). They note that only females are migrating because of the chimps' social structure, and only once. Behaviors are discretized as non-tool behaviors, 'simple' unitary tool use, or 'complex' toolset behaviors. 
+
+The authors hypothesized that foraging behaviors without tools or with simple tools should exhibit weak associations with interconnectivity, while complex toolsets should be explained by migration between groups and localized based on within-region (group) interactions.
+
+Based on the prediction of sharing behaviors, they find that complex tool behaviors correlate with strong within-group interactions, together with some between-group interactions (stimulating the diversity of cultural transmission). They also discuss how complex behaviors might have evolved from simpler forms of the same behaviors, via repurposing or incremental change.
+
+Where are the groups? Hidden in the nodes, and as boundaries around subspecies. The grouping matters because it influences migration patterns, as mapped by genetic flow. Does that count as group effects? Maybe? The authors show that tool-making in chimps depend on group-level interactivity. By having between-group exchanges, some behaviors can be more complex than chimps figuring out on their own by trials and errors. 
+
+That said, between-group exchanges is not the same group as group interactions, as defined in flatland. The chimps are not assumed to put their <em>mind together</em> to unlock new tools. As such, the groups were, arguably, reducible to the set of pairwise interaction. In other words, it was probably fine to sum up individual behaviors into an aggregate. 
+
+You can think of this case study as baseline for social groups that are reducible to their constituents. How do we get from there to corporate entities that optimize their group-level interests, even though they might be mis-aligned with the intentions of individuals running the companies.
+</details>
+
 ### Anthropology
+
+<div class="tags">
+		{#each ['kinship groups'] as category}
+			<span class="surface-4">&num;{category}</span>
+		{/each}
+	</div>
 
 Anthropologists are interested in the structure and dynamics of kinship groups. Kinships are social groups that comprise sets of related individuals and exhibit a number of kin-based institutions, or social norms. Those institutions cut across all aspects of human lives---regulating marriages, descent, post-marital residence, family organizations and governance---making humans a deeply cultural species.
 
@@ -303,13 +380,6 @@ Kin-based institutions are still predominant in the world. In many countries, ma
 Anthropologists typically study <span class="small">small-ish</span> networks (compared to what is possible with modern institutions). Their networks exhibit <span class="small">persistent</span> pairwise (across individuals) and higher-order links (households, clans, federation). With the mix of <span class="small">repetition</span> and <span class="small">small size networks</span>, it is thought that indirect reciprocity can play a key role in determining the shape and dynamics of the social networks. Kinship networks have clear and explicit rules about <span class="small">boundaries</span>, that is, whose in and whose out, as well as norms that are specific to each group. Their networks are less <span class="small">stratified</span> than what is possible since the industrial revolution, potentially making governance more <span class="small">aligned</span> with individual's intentionalities.
 
 Although it is depend on the time and place, it is not rare than tribes are at war, promoting strong <span class="small">boundaries</span>. This has many consequences, such as maintaining low within-group cultural variations, while increase between group variations. Given their governance type that is, and the number of rituals promoting synchrony, we assume that kinship's collective intentionalities ought to be more <span class="small">aligned</span> with the individuals. 
-
-<details class="rabbit-hole" style="margin-top: 3vh">
-<summary>Case Study</summary>
-Given their interested in kinships, anthrpologists are often interested in primatology. One question in cultural anthropology is whether chimps also exhibit cultural behaviors, or behavioral transmission transmitted via social learning. One answer from the field is that yes, they do. Many behavioral traditions such as tool making might be the outcome of different chimp cultures. Then, the next frontier was, do they have cumulative culture? That is, cultural learning that is ratcheted over generations? So much so that a chimp couldn't reproduce the behaviors from scratch.
-<br><br>
-To answer that question, <a href="https://www.biorxiv.org/content/biorxiv/early/2023/08/28/2023.08.14.553272.full.pdf">Gunasekaram et al</a> looked at the interactions of network structure and dynamics with cultural learning, looking at how polygynandrous modes of organization incluencing who get to migrate (only female), together with hierarchy, might have reduce the learning basins at group-level.
-</details>
 
 ### Sociology
 
@@ -404,6 +474,16 @@ WIP
       right: 0;
       padding: 1rem;
   }
-  
+
+  .tags {
+		display: flex;
+		gap: var(--size-3);
+		margin-top: var(--size-7);
+	}
+
+	.tags > * {
+		padding: var(--size-2) var(--size-3);
+		border-radius: var(--radius-round);
+	}
   
 </style>
