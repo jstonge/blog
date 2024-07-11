@@ -381,7 +381,7 @@ We use opacity to indicate when particular properties are relevant to different 
 
 ## Embracing diversity
 
-Now we are leaving flatland and entering the messy world of reality, from the lens of different field of study. We seek to map field of study onto related social groups, expressed as network types. 
+Now we are leaving flatland and entering the messy world of reality, from the lens of different fields of study. We seek to map field of study onto related social groups, expressed as network types. 
 
 <details style="margin-top: 2vh;">
 <summary>Case study: Chimps, interconnectivity, and cumulative culture</summary>
@@ -432,7 +432,31 @@ Like anthropology, sociologists have turned their gaze back on our scientific in
 
 WIP
 
+### Organizational sciences
 
+<div class="tags">
+		{#each ['voluntary organizations', 'firms', 'organograms'] as category}
+			<span class="surface-4">&num;{category}</span>
+		{/each}
+</div>
+
+Organizational scientists don't shy away of calling organzations rational systems. They discuss corporate culture, how organizations evolve, and how organizations evolve. Organization have goals, performed by a set of purposeful and coordinated actors. 
+
+Organizational scientists ask questions about how specific types of groups promote some individuals but not others; and how this impact the overall culture of an organization. They dive into administrative behaviors (H. Simon), and how to make sense of bureaucraties and institutionalization process (groups of people scaling up by adopting formal rules). This is the realm of impersonal relationships, binded together by corporate behemoths.
+
+WIP
+
+### Collective action theorists
+
+<div class="tags">
+		{#each ['public goods', 'Ostromology'] as category}
+			<span class="surface-4">&num;{category}</span>
+		{/each}
+</div>
+
+How do groups of people address selfish behaviors with respect to openly available resources.
+
+WIP
 
 
 <style>
