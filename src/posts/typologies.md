@@ -425,6 +425,8 @@ Anthropologists typically study <span class="small">small-ish</span> networks (c
 
 Although it is depend on the time and place, it is not rare than tribes are at war, promoting strong <span class="small">boundaries</span>. This has many consequences, such as maintaining low within-group cultural variations, while increase between group variations. Given their governance type that is, and the number of rituals promoting synchrony, we assume that kinship's collective intentionalities ought to be more <span class="small">aligned</span> with the individuals. 
 
+See <a href="https://pubmed.ncbi.nlm.nih.gov/22281599/">[1]</a>
+
 ### Sociology
 
 <div class="tags">
@@ -461,7 +463,12 @@ WIP
 		{/each}
 </div>
 
-How do groups of people address selfish behaviors with respect to openly available resources. How do people self-organize to make sure common-pool resources are sustaible. What is the role of top-down institutions in promoting that sustainability.
+How do groups of people address rational (or selfish) behaviors with respect to openly available resources? Not so long ago, the commonly held view was that selfish behaviors would inevitably lead to the depletion of common-pool resources. The thinking was that everybody would be better off fishing a bit less. But since individuals seek to maximize their personal gains, they will end up depleting the resources. Thus, top-down institutions were thought to be essentials in promoting sustainability. The question was which one; institutions promoting free-market or that of centralized governements who sought to regulate the market.
+
+Collective action theory offered a third approach on the topic. They showed that people are able self-organize to make sure common-pool resources are sustainable, without necessary the need of top-down institutions. Collection theory led to a rich literature on public good games, and under which conditions can self-governance can insure the sustainability of common-pool resources. That is, how groups can reach optimum group investment. Here, the groups are defined as set of individuals that cannot be easily prevented to access shared resources, aka fisheries, forest, and even free and open-source software.
+
+_refs_: <a href="https://wiki.santafe.edu/images/e/e8/PublicGoods.pdf">[2]</a>,<a href="https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=ef0d07a4cca1d8eaa4c0b8f6bf922b3c18cf5e7f">[3]</a>,<a href="https://arxiv.org/pdf/1011.1293">[4]</a>, <a href="https://royalsocietypublishing.org/doi/full/10.1098/rsif.2012.0997">[5]</a>
+
 
 WIP
 
