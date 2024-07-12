@@ -37,7 +37,7 @@ coverImage: ../thumbnails/stories/cgs-ver-abstract.webp
   // let Battiston2020 = new Cite("10.1016/j.physrep.2020.05.004").format('citation', {format: 'html'})
   
   let currentStep = 0;
-  let currentForm = 3;
+  let currentForm = 0;
 
   function handleClick() {
     currentForm = (currentForm + 1) % 4;
@@ -104,7 +104,7 @@ We review how different human sciences are focusing on varying aspects of our no
 
 ## Flatland
 
-<div class="margin-note" style="display: flex; justify-content: center; align-items: center; margin-top: 6vh;">
+<div class="margin-note" style="display: flex; justify-content: center; align-items: center; margin-top: 1vh;">
   {#if currentForm === 0} 
   <button on:click={() => handleClick()}>Make it a network </button>
   {:else if currentForm === 1}
@@ -182,7 +182,11 @@ We use opacity to indicate when particular properties are relevant to different 
           </div>
         {/if}
         </div>
-        <!-- 3. PersistenceNetwork -->
+        <!-- 
+              #########################
+              # 3. PersistenceNetwork #
+              #########################
+        -->
         {#if currentForm == 0}
           <div class='step' class:active={currentStep === 2}>
           <p style={currentStep === 2 ? "opacity:0.3;" : "opacity:1;"}><span class="small">Persistence</span>: It is hard to talk about interconnectedness without the underlying assumptions of group persistence.</p>
@@ -246,7 +250,15 @@ We use opacity to indicate when particular properties are relevant to different 
               ###########################
         -->
         <div class='step' class:active={currentStep === 5}>
-          <p><span class="small">Differentiation</span>: How components of the systems have different (functional) roles.</p>
+          {#if currentForm === 0}
+            <p><span class="small">Differentiation</span></p>
+          {:else if currentForm === 1}
+            <p><span class="small">Differentiation</span>: How components of the systems have different (functional) roles. It can take many forms. <em>Leadership</em> is a role that is recurrent, which can be informed by different style of hierarchies (more or less steep). There could be another dimension here, namely specialization. The degree to which you only do one job.</p>
+          {:else if currentForm === 2}
+            <p><span class="small">Differentiation</span>: How components of the systems have different (functional) roles.</p>
+          {:else if currentForm === 3}
+            <p><span class="small">Differentiation</span>: How components of the systems have different (functional) roles.</p>
+          {/if}
         </div>
         <!-- 
               ##########################
@@ -328,16 +340,19 @@ We use opacity to indicate when particular properties are relevant to different 
               #############
         -->
         <hr style="margin-bottom: 3vh">
-        <details class="rabbit-hole">
-        <summary>+ <span class="small">cultural intentionality layer</span></summary>
-        Wait, why? What is happening. Welcome to the philosophical rabbit hole. As with indigenous land, we are listening to philosophers and qualitative scientists and recognizing that networks lack something deep and important; lets call it intentionality (see <a href="https://plato.stanford.edu/entries/phenomenology/">phenomenology</a> entry on Stanford Encyclopedia of Philosophy if you are in the mood. You have still time to close that window if you wish). 
+        <details class="rabbit-hole" open="true">
+        <summary>+ <span class="small">intentional layer</span></summary>
+        Welcome to the philosophical rabbit hole. You still have time to hide this window if you are not in the mood. 
         <br><br>
-        Intentionality is hidden from mere mortal eyes. It is this "thing" (process? active inference? <em>res cogitans</em>? Yes, why not go all the way to Descartes. This is all the stuff after all) that we cannot get rid of in our Western ontology. <del>This sensation that we are special snowflake</del> We embrace that the idea that there is somethig to explain; that intentionality matters when it comes to explain the reducibility of groups to individuals. That is, the age old question of whether groups have, somehow, some existence that is "more" than the sum of individuals.
+        Philosophers argue that humans are special in that they can turn mere collection of individual actions into something more. What is meant by more? Some individual actions or dynamic properties of the graphs that can't be defined by individuals alone. 
         <br><br>
-        In practice, this means we need something more than the structure and dynamics of networks to explain human social groups. For now, this take the form of concepts from qualitative sciences that we assume, someho, emerge from our social networks.
+        For instance, think about behaviors motivated by normative expectations, or how group members expect one another to behave according to the ways of the group. What is meant here is that some actions and beliefs depend on how people derive meaning from assumed set of rules, which might different across members of the groups. If group memberships depend on the ability of individuals to follow the rules that the groups have established, but 
+        <!-- Consider the act of friends' walking together; this is not just about moving at the same pace in the same direction. There is a joint commitment, or shared intentionality that is involved in this action. Philosophers like to say that "walking together" is what remains when you subtract the fact that two persons acted individually from the action of walking together. They refer to this broad idea as collective intentionality (CI). -->
+        <br><br>
+        Why is CI a problem for network science? 
         <br><br>
           <details class="rabbit-hole" style="margin-bottom: 3vh">
-          <summary>Intentionality is cultural</summary>
+          <summary>+Intentionality is cultural</summary>
           However, we won't give it all to philosophers. We are claiming that this intentionality is not that universal thing that exists beyond culture. Adopting a cultural evolutionist stance, we claim that intentionality as been enculturated, as the rest of our (human) biology (CITE Boyd & Richerson, Henrich, Laland, and the rest of the gang). As such, the hard problem is to provide a natural history of our intentionality, not that our <em>res cogitans</em> is somehow of a different kind than the rest of the natural world. See Tomesello (all of his works) for what I mean by a natural history of X.
           </details>
         </details>
@@ -360,10 +375,6 @@ We use opacity to indicate when particular properties are relevant to different 
           <p><span class="small">Institutional strength & formalism</span>: Adopting a group-level perspective makes it easier to model institutionalization process. Now groups, not individuals, decide to scale up the level of policies that can change individual behaviors, in turn influencing composition.</p>
           {/if}
         </div>
-        <!-- CollectiveIntentionality -->
-        <div class='step' class:active={currentStep === 10}>
-        <p><span class="small">Collective Intentionality</span>: Aboutness of groups, which might or might not be aligned with that of individuals.</p>        
-        </div>
         <!-- CognitiveDiversity -->
         <div class='step' class:active={currentStep === 11}>
         <div class="margin-note ">
@@ -371,15 +382,11 @@ We use opacity to indicate when particular properties are relevant to different 
         </div>
         <p><span class="small">Cognitive diversity</span>: Related to differentiation, but not reducible to it. We define cognitive diversity as sets of sociotechnical expertises and know-hows that interact in a way that is more than the sum of its part. This is the secret sauce of teams that are (actively?) driven by a shared goal.</p>
         </div>
-        <!-- Presence -->
-        <div class='step' class:active={currentStep === 12}>
-        <p><span class="small">Presence (experimental)</span>: Most of what I discussed about is derived from some literature. Here I am making this up to distinguish face-to-face from impersonal interactions. With impersonal interactions, I summon the idea of "presence in absence" (I think this is from Heidegger, but shhh). Some people (aka Searle) call that the "we-" attitude (that is in the mind of the beholder).</p>
-        </div>
     </Scrolly>
   </div>
 </section>
 
-## Embracing diversity
+## Cutting through social sciences using network science
 
 Now we are leaving flatland and entering the messy world of reality, from the lens of different fields of study. We seek to map field of study onto related social groups, expressed as network types. 
 
@@ -421,7 +428,7 @@ Although it is depend on the time and place, it is not rare than tribes are at w
 ### Sociology
 
 <div class="tags">
-		{#each ['voluntary organizations', 'society'] as category}
+		{#each ['voluntary orgs.', 'society'] as category}
 			<span class="surface-4">&num;{category}</span>
 		{/each}
 </div>
@@ -435,7 +442,7 @@ WIP
 ### Organizational sciences
 
 <div class="tags">
-		{#each ['voluntary organizations', 'firms', 'organograms'] as category}
+		{#each ['voluntary orgs.', 'firms', 'organograms', 'supply-chain'] as category}
 			<span class="surface-4">&num;{category}</span>
 		{/each}
 </div>
@@ -454,7 +461,7 @@ WIP
 		{/each}
 </div>
 
-How do groups of people address selfish behaviors with respect to openly available resources.
+How do groups of people address selfish behaviors with respect to openly available resources. How do people self-organize to make sure common-pool resources are sustaible. What is the role of top-down institutions in promoting that sustainability.
 
 WIP
 
