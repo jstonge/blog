@@ -8,11 +8,14 @@
 		<!-- <link rel="icon" href="https://fav.farm/🔥" /> -->
 		<!-- <link rel="alternate" type="application/atom+xml" href="/rss.xml" /> -->
 		<script type="module">
-			const theme = localStorage.getItem('color-scheme')
+			// const theme = localStorage.getItem('color-scheme')
 
-			theme
-				? document.documentElement.setAttribute('color-scheme', theme)
-				: localStorage.setItem('color-scheme', 'dark')
+			// theme
+			// 	? document.documentElement.setAttribute('color-scheme', theme) 
+			// 	: localStorage.setItem('color-scheme', 'light')
+			
+			//SETTING LIGHT THEME
+			localStorage.setItem('color-scheme', 'light')
 		</script>
 		%sveltekit.head%
 	</head>

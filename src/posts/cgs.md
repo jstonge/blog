@@ -3,8 +3,8 @@ title: Cultural group selection for group-enthusiast physicists
 description: Why bother with cultural group selection?
 date: '2024-07-05'
 categories:
-  - cultural group selection
-  - game theory
+  - culturalGroupSelection
+  - gameTheory
 published: true
 pinned: true
 coverImage: https://raw.githubusercontent.com/jstonge/blog/main/thumbnails/stories/cgs-ver-abstract.webp

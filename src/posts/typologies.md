@@ -467,7 +467,7 @@ How do groups of people address rational (or selfish) behaviors with respect to 
 
 Collective action theory offered a third approach on the topic. They showed that people are able self-organize to make sure common-pool resources are sustainable, without necessary the need of top-down institutions. Collection theory led to a rich literature on public good games, and under which conditions can self-governance can insure the sustainability of common-pool resources. That is, how groups can reach optimum group investment. Here, the groups are defined as set of individuals that cannot be easily prevented to access shared resources, aka fisheries, forest, and even free and open-source software.
 
-_refs_: <a href="https://wiki.santafe.edu/images/e/e8/PublicGoods.pdf">[2]</a>,<a href="https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=ef0d07a4cca1d8eaa4c0b8f6bf922b3c18cf5e7f">[3]</a>,<a href="https://arxiv.org/pdf/1011.1293">[4]</a>, <a href="https://royalsocietypublishing.org/doi/full/10.1098/rsif.2012.0997">[5]</a>
+_refs_: <a href="https://wiki.santafe.edu/images/e/e8/PublicGoods.pdf">[2]</a>,<a href="https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=ef0d07a4cca1d8eaa4c0b8f6bf922b3c18cf5e7f">[3]</a>,<a href="https://arxiv.org/pdf/1011.1293">[4]</a>, <a href="https://royalsocietypublishing.org/doi/full/10.1098/rsif.2012.0997">[5]</a>, 
 
 
 WIP

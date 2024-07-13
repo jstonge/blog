@@ -18,6 +18,7 @@
 		<span>Title</span>
 		<span>Date</span>
 		<span>Description</span>
+		<span>Cover</span>
 		<span>Tags</span>
 	</div>
 	
@@ -30,6 +31,7 @@
 			<a href={post.slug} class="title">{post.title}</a>
 			<p class="date">{formatDate(post.date)}</p>
 			<p class="description">{post.description}</p>
+			<img src={post.coverImage} alt={post.title} class="cover-image">
 			<div class="tags">
 				{#each post.categories as category}
 					<p class="surface-4">&num;{category}</p>
@@ -61,20 +63,20 @@
 
 	.table-header {
 		display: grid;
-		justify-items: center;
+		justify-items: left;
 		grid-template-rows: auto 1fr auto;
 		margin-inline: auto;
-		font-size: var(--font-size-fluid-2);
+		font-size: var(--font-size-fluid-3);
 		font-weight: 600;
 		color: var(--text-3-dark);
 		padding-bottom: var(--size-7);
-
+		margin-left: 2vw;
 	}
 
 	.table-layout {
 		width: 70rem;
 		display: grid;
-		grid-template-columns: repeat(4, 1fr);
+		grid-template-columns: repeat(5, 1fr);
 		column-gap: 2em;
 	}
 
@@ -101,12 +103,22 @@
 	.date {
 		color:  var(--text-3-dark);
 		font-size: var(--font-size-fluid-2);
+		width: 7vw;
 	}
 
 	.description {
 		color:  var(--text-3-dark);
 		font-size: var(--font-size-fluid-2);
 	}
+
+	.cover-image {
+        width: 250px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 0px;
+        border: 1px solid var(--border);
+        margin-right: var(--size-5);
+    }
 
 	.tags {
 		margin-top: var(--size-1);
