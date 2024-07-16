@@ -7,7 +7,7 @@ categories:
   - data viz
 published: true
 pinned: false
-coverImage: https://raw.githubusercontent.com/jstonge/hello-research-groups/main/docs/assets/measuring.webp
+coverImage: https://raw.githubusercontent.com/jstonge/blog/main/thumbnails/stories/rise-internet.webp
 ---
 
 This is a small [observable notebook](https://observablehq.com/@jstonge/the-spread-of-computational-thinking) for visualizing the evolution of the internet, from wikipedia. 

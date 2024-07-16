@@ -1,13 +1,13 @@
 ---
 title: Grontology
-description: A physicist and philosopher walk into a bar. The physicist asks to the philosopher, what do you think are irreducible social groups? 
+description: How do different fields of study understand social groups?
 date: '2024-07-12'
 categories:
   - literature review
   - framework
 published: true
 pinned: false
-coverImage: https://raw.githubusercontent.com/jstonge/hello-research-groups/main/docs/assets/HenslinCh5.webp
+coverImage: https://raw.githubusercontent.com/jstonge/blog/main/thumbnails/stories/grontology.webp
 ---
 
 I wrote a small [observable framework entry](https://jstonge.observablehq.cloud/hello-research-groups/grontology) for visualizing the my literature of groups ontology. What I like about it is that we can see a wide variability of patterns of coauthorships and productivity, that we know are closely related. 
