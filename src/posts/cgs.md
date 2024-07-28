@@ -224,6 +224,7 @@ Cultural group selection is connected to the following topics in McElreath & Boy
 - <a href="https://scholar.harvard.edu/files/henrich/files/what_makes_us_smart_final.pdf">What makes us smart? (Henrich & Muthukrishna 2023)</a>
 
 In the next part of the series, we look at how CGS can relate to group-based master equations.
+
 <style>
 
   /* Style for margin note */

@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 	import * as config from '$lib/config'
 </script>
 
@@ -8,8 +8,10 @@
 
 <style>
 	footer {
+		margin-top: 3rem;
 		padding-block: var(--size-7);
 		border-top: 1px solid var(--border);
+		margin-inline: var(--size-7);
 	}
 
 	p {

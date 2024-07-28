@@ -43,44 +43,16 @@
 		{/each}
 	  </ul>
 </section>
-<section>
-	<div class="divider"></div>
-	<h2>Projects</h2>
-	
-	<div>
-		<h3 tabindex="-1" dir="auto">
-			<a href="https://jstonge.observablehq.cloud/hello-research-groups/">
-				<code>Hello-Research-Groups</code>
-			</a> - <p class="status">Status: Ongoing</p>
-		</h3>
-		<img src="https://raw.githubusercontent.com/jstonge/blog/main/thumbnails/stories/cgs-ver-abstract.webp" alt="hello-research-group" class="cover-image" style="margin-top:1rem; margin-bottom:1rem">
-		<p><a href="https://github.com/jstonge/hello-research-groups" style="text-decoration: underline; text-underline-offset: .2rem;">Source</a> ·  A collection of entries, tied together by the idea of defining, modeling, and measuring social groups.</p>
-	</div>
-		
-	<hr>
-</section>
+
 
 <style>
-	.status {
-		margin-top: 2rem;
-		font-size: var(--font-size-fluid-3);
-		display: inline-block; /* Ensure the tag is only as wide as its content */
-		padding: var(--size-1) var(--size-3);
-		border: 1px solid var(--border);
-		border-radius: var(--radius-round);
-		margin: var(--size-2); 
-	}
+
 
 	h2 {
       margin: 0;
       padding: 0;
       font-weight: 300;
 	  margin-bottom: 5vh;
-    }
-
-	h3 {
-		font-size: 1.25em;
-		line-height: 1.25;
     }
 
 	.divider {

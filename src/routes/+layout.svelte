@@ -1,27 +1,59 @@
-<script lang="ts">
-	import Footer from './footer.svelte'
-	import Header from './header.svelte'
-	import PageTransition from './transition.svelte'
 
-	import 'open-props/style'
+<script>
+    import NavBar from "./navbar.svelte";
+    import Footer from "./footer.svelte";
+    import '../app.css'
+    
+    import 'open-props/style'
 	import 'open-props/normalize'
 	import 'open-props/buttons'
-	import '../app.css'
 
 	export let data
 </script>
 
-<div class="layout">
-	<Header />
-	<main>
-		<PageTransition url={data.url}>
-			<slot />
-		</PageTransition>
-	</main>
-	<Footer />
+<div class="app">
+    <NavBar />
+    <slot />
+    <Footer />
 </div>
 
+
 <style>
+
+    .app {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    :global(root) {
+        --primary: #333;
+        --secondary: #f4f4f4;
+        --dark: #333;
+        --light: #f4f4f4;
+    }
+
+    :global(*) {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+    }
+
+    :global(body) {
+        max-width: 100%;
+        overflow-x: hidden;
+        height: 100%
+    }
+    :global(html) {
+        max-width: 100%;
+        overflow-x: hidden;
+        height: 100%
+    }
+
+</style>
+
+<!-- <style>
 	.layout {
 		height: 100%;
 		max-inline-size: 1440px;
@@ -40,4 +72,4 @@
 			padding-inline: 0;
 		}
 	}
-</style>
+</style> -->
