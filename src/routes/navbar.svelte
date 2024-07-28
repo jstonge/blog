@@ -6,11 +6,10 @@
     }
     
     let current = -2;
-    
 </script>
 
 <div class="navbar">
-    <div class="logo" on:click={() => current = -1}><h2><a href="/">Humans & Golems</a></h2></div>
+    <div class="logo" on:click={() => current = -1}><h2><a href="/">Humans & Golems</a></div>
     <nav class:open={isMenuOpen}>
         <ul>
             <li on:click={()=>{isMenuOpen = false}}><a class:current={current===0} on:click={() => current = 0} href="/about">About</a></li> 
@@ -95,7 +94,7 @@
     }
 
     /* On small screens, hide the nav and show the burger */
-    @media only screen and (max-width: 767px) {
+    @media screen and (max-width: 767px) {
         .burger {
             height: 28px;
             aspect-ratio: 1;
@@ -131,18 +130,20 @@
             display: block;
             position: absolute;
             top: 100%;
-            left: 100%;
+            left: 0;
             background-color:whitesmoke;
             width: 100%;
             transition: all 300ms ease-in-out;
+            pointer-events: none;
         }
 
         nav.open {
             opacity: 1;
-            left: 0;
+            pointer-events: auto;
         }
+
         a {
-        color: #333;
+            color: #333;
         }
 
         li > a {
@@ -151,40 +152,18 @@
     }
 
     /* On large screens, hide the burger and show the nav */
-    @media only screen and (min-width: 768px) {
-        
-    .burger {
-        height: 28px;
-        aspect-ratio: 1;
-        border: 2px solid transparent;
-        background-color: transparent;
-        border-radius: 5px;
-        margin-right: 2vw;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .burger > div {
-        height: 2px;
-        width: 14px;
-        background-color: #333;
-        position: absolute;
-        transition: all 300ms ease-in-out;
-    }
+    @media screen and (min-width: 768px) {
+        .burger {
+            display: none;
+        }
 
         .navbar {
             margin-top: 1vh;
-            /* margin-bottom: 1vh; */
             background-color: transparent;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: relative;
-        }
-
-        .burger {
-            display: none;
         }
 
         nav {

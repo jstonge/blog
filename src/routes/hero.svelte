@@ -136,7 +136,7 @@ ins.is-visible {
 
 
 /* On small screens, hide the nav and show the burger */
-@media only screen and (max-width: 767px) {
+@media screen and (max-width: 767px) {
   .centered {
     font-size: 8vw;
   }

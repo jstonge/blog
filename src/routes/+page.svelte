@@ -150,7 +150,7 @@
 	}
 
     /* On small screens, hide the nav and show the burger */
-    @media only screen and (max-width: 767px) {
+    @media screen and (max-width: 767px) {
         .hero h3 {
             font-size: 5.5vw;
         }
